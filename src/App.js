@@ -5,7 +5,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, TabBarBottom } from 'react-navigation';
+
+import Colors from 'src/colors';
 
 
 const HomeScreen = () => (
@@ -28,8 +30,15 @@ const App = TabNavigator({
     screen: FeedbackScreen,
   },
 }, {
+  tabBarComponent: TabBarBottom,
   tabBarPosition: 'bottom',
   swipeEnabled: false,
+  tabBarOptions: {
+    activeTintColor: Colors.max,
+    activeBackgroundColor: Colors.min,
+    inactiveTintColor: Colors.med,
+    inactiveBackgroundColor: Colors.min,
+  },
 });
 
 export default App;
