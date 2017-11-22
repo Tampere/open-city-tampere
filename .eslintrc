@@ -73,5 +73,10 @@
     // React
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
+
+    // Absolute path imports
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off"
   }
 }
