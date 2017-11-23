@@ -16,6 +16,9 @@
 ; Ignore polyfills
 .*/Libraries/polyfills/.*
 
+; Ignore react-navigation
+.*/node_modules/react-navigation/.*
+
 [include]
 
 [libs]
