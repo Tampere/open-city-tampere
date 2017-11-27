@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+/* @flow */
 import {
   Platform,
   StyleSheet,
