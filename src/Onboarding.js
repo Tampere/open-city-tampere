@@ -55,10 +55,10 @@ export default class Onboarding extends React.Component<Props, State> {
     this.setState({ step: step + 1, profile });
   }
 
-  previous = () => {
+  previous = (profile: Profile) => {
     const { step } = this.state;
     if (step > 0) {
-      this.setState({ step: step - 1 });
+      this.setState({ step: step - 1, profile });
     }
   }
 
