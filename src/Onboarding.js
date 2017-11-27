@@ -1,6 +1,10 @@
 // @flow
 import * as React from 'react';
 
+import colors from 'src/colors';
+
+const locale = 'fi';
+
 /*
   Takes steps as children.
   Keeps the index of current step and data given by the user in its state.
@@ -67,6 +71,8 @@ export default class Onboarding extends React.Component<Props, State> {
       profile: this.state.profile,
       step: this.state.step,
       totalSteps: this.totalSteps,
+      colors,
+      locale,
     };
     const currentStepWithProps: React.Element<any> = React.cloneElement(currentStep, stepProps);
     return currentStepWithProps;
