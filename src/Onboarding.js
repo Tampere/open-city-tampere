@@ -3,27 +3,29 @@ import * as React from 'react';
 
 /*
   Takes steps as children.
-  Keeps the index of current step and choices made in steps in its state.
+  Keeps the index of current step and data given by the user in its state.
   Renders the current step which gets the following props:
-    next: a function that takes a choices object as an argument and goes to the next step
+    next: a function that takes a profile object as an argument and goes to the next step
     previous: a function that goes to the previous step
-    choices: object that contains choices made so far
+    profile: object that contains data given so far
     step: index of the current step (0 .. totalSteps-1)
     totalSteps: total number of steps in onboarding
-  Takes onFinish callback as a prop, which is called with the final choices at
+  Takes onFinish callback as a prop, which is called with the final profile object at
   the end of the last step.
 
-  TODO: define the shape of the choices object somewhere instead of using any
+  TODO: define the shape of the profile object somewhere instead of using any
 */
 
+type Profile = any;
+
 type Props = {
-  onFinish: (any) => void,
+  onFinish: (Profile) => void,
   children: React.ChildrenArray<React.Element<any>>,
 };
 
 type State = {
   step: number,
-  choices: any,
+  profile: Profile,
 };
 
 export default class Onboarding extends React.Component<Props, State> {
@@ -32,7 +34,7 @@ export default class Onboarding extends React.Component<Props, State> {
 
     this.state = {
       step: 0,
-      choices: {},
+      profile: {},
     };
   }
 
@@ -40,13 +42,13 @@ export default class Onboarding extends React.Component<Props, State> {
     return React.Children.count(this.props.children);
   }
 
-  next = (choices: any) => {
+  next = (profile: Profile) => {
     const { step } = this.state;
     if (step === this.totalSteps - 1) {
-      this.props.onFinish(choices);
+      this.props.onFinish(profile);
       return;
     }
-    this.setState({ step: step + 1, choices });
+    this.setState({ step: step + 1, profile });
   }
 
   previous = () => {
@@ -62,7 +64,7 @@ export default class Onboarding extends React.Component<Props, State> {
     const stepProps = {
       next: this.next,
       previous: this.previous,
-      choices: this.state.choices,
+      profile: this.state.profile,
       step: this.state.step,
       totalSteps: this.totalSteps,
     };
