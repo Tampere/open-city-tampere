@@ -57,7 +57,9 @@ export default class Onboarding extends React.Component<Props, State> {
 
   previous = () => {
     const { step } = this.state;
-    this.setState({ step: step - 1 });
+    if (step > 0) {
+      this.setState({ step: step - 1 });
+    }
   }
 
   render() {
