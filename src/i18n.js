@@ -40,7 +40,7 @@ i18n
     ns: ['common'],
     defaultNS: 'common',
 
-    debug: true,
+    debug: __DEV__,
 
     interpolation: {
       escapeValue: false,
