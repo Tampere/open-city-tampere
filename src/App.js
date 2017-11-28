@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
 /* @flow */
+import * as React from 'react';
 import {
-  Platform,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
+import { withProps } from 'recompose';
 
+import Onboarding from 'src/Onboarding';
+import SingleChoiceStep from 'src/OnboardingSteps/SingleChoiceStep';
+import colors from 'src/colors';
 
 
 const HomeScreen = () => (
@@ -15,7 +17,6 @@ const HomeScreen = () => (
     <Text>Home Screen</Text>
   </View>
 );
-import colors from 'src/colors';
 
 const FeedbackScreen = () => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -42,4 +43,26 @@ const App = TabNavigator({
   },
 });
 
-export default App;
+const userTypeOptions = [
+  { value: 'local', label: 'Kuntalainen' },
+  { value: 'visitor', label: 'Tamperelainen' },
+];
+
+const userTypeProps = {
+  choiceKey: 'userType',
+  options: userTypeOptions,
+  title: 'Tampere App',
+  question: 'Oletko?',
+};
+
+const UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
+
+const MyOnboarding = () => (
+  <Onboarding
+    onFinish={choices => console.warn('choices', choices)}
+    steps={[UserTypeStep]}
+  />
+);
+
+// export default App;
+export default MyOnboarding;

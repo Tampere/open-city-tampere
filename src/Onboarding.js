@@ -1,7 +1,7 @@
 /* @flow */
 import * as React from 'react';
 
-import colors from 'src/colors';
+import colors, { type ColorSet } from 'src/colors';
 
 const locale = 'fi';
 
@@ -18,13 +18,23 @@ const locale = 'fi';
   the end of the last step.
 
   TODO: define the shape of the profile object somewhere instead of using any
+    * not possible because modules should know the Profile type also
 */
-
 type Profile = any;
 
+export type StepProps = {
+  next: Profile => void,
+  previous: Profile => void,
+  profile: Profile,
+  step: number,
+  totalSteps: number,
+  colors: ColorSet,
+  locale: string,
+};
+
 type Props = {
-  onFinish: (Profile) => void,
-  children: React.ChildrenArray<React.Element<any>>,
+  onFinish: Profile => void,
+  steps: Array<React.ComponentType<StepProps>>,
 };
 
 type State = {
@@ -42,13 +52,9 @@ export default class Onboarding extends React.Component<Props, State> {
     };
   }
 
-  get totalSteps() {
-    return React.Children.count(this.props.children);
-  }
-
   next = (profile: Profile) => {
     const { step } = this.state;
-    if (step === this.totalSteps - 1) {
+    if (step === this.props.steps.length - 1) {
       this.props.onFinish(profile);
       return;
     }
@@ -64,19 +70,16 @@ export default class Onboarding extends React.Component<Props, State> {
 
   render() {
     const { step } = this.state;
-    const childrenArray: Array<React.Element<any>>
-      = React.Children.toArray(this.props.children);
-    const currentStep = childrenArray[step];
+    const CurrentStep = this.props.steps[step];
     const stepProps = {
       next: this.next,
       previous: this.previous,
       profile: this.state.profile,
       step: this.state.step,
-      totalSteps: this.totalSteps,
+      totalSteps: this.props.steps.length,
       colors,
       locale,
     };
-    const currentStepWithProps: React.Element<any> = React.cloneElement(currentStep, stepProps);
-    return currentStepWithProps;
+    return <CurrentStep {...stepProps} />;
   }
 }
