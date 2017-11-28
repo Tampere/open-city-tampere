@@ -6,11 +6,12 @@ import {
 } from 'react-native';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { withProps } from 'recompose';
+// import { translate } from 'react-i18next';
 
 import Onboarding from 'src/Onboarding';
 import SingleChoiceStep from 'src/OnboardingSteps/SingleChoiceStep';
 import colors from 'src/colors';
-
+import i18n from 'src/i18n';
 
 const HomeScreen = () => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -44,23 +45,32 @@ const App = TabNavigator({
 });
 
 const userTypeOptions = [
-  { value: 'local', label: 'Kuntalainen' },
-  { value: 'visitor', label: 'Tamperelainen' },
+  { value: 'local' },
+  { value: 'visitor' },
+];
+const userTypeOptions2 = [
+  { value: 'local' },
+  { value: 'visitor' },
 ];
 
 const userTypeProps = {
   choiceKey: 'userType',
   options: userTypeOptions,
-  title: 'Tampere App',
-  question: 'Oletko?',
+  ns: 'userTypeStep',
+};
+const userTypeProps2 = {
+  choiceKey: 'userType2',
+  options: userTypeOptions2,
+  ns: 'userTypeStep',
 };
 
 const UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
+const UserTypeStep2: React.ComponentType<any> = withProps(userTypeProps2)(SingleChoiceStep);
 
 const MyOnboarding = () => (
   <Onboarding
     onFinish={choices => console.warn('choices', choices)}
-    steps={[UserTypeStep]}
+    steps={[UserTypeStep, UserTypeStep2]}
   />
 );
 

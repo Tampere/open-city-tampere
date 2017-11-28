@@ -8,9 +8,11 @@ import {
   ScrollView,
 } from 'react-native';
 import { cloneDeep } from 'lodash';
+import { translate } from 'react-i18next';
+
 import OptionButton from 'src/OnboardingSteps/components/OptionButton';
-import colors, { type ColorSet } from 'src/colors';
-// An onboarding step component where the user can select one option from many
+import colors from 'src/colors';
+// import type ColorSet from 'src/colors';
 
 type Profile = {[string]: mixed};
 
@@ -22,11 +24,12 @@ type Props = {
   // totalSteps: number,
   // colors: ColorSet,
   // locale: string,
-  options: Array<{value: string, label: string}>,
+  options: Array<{value: string}>,
     // array of options, value is saved to the profile object, label is the text shown on button
   choiceKey: string, // choice is saved in the profile object with this key as the property name
-  title: string,
-  question: ?string,
+  ns: string,
+  t: string => string,
+  i18n: any,
 };
 
 type State = {
@@ -35,7 +38,10 @@ type State = {
 
 let styles;
 
-export default class SingleChoiceStep extends React.Component<Props, State> {
+/*
+ An onboarding step component where the user can select one option from many
+ */
+class SingleChoiceStep extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -69,20 +75,26 @@ export default class SingleChoiceStep extends React.Component<Props, State> {
     this.props.previous(newProfile);
   }
 
+  tNS = (key: string): string => {
+    const { t, ns } = this.props;
+    return t(`${ns}:${key}`);
+  }
+
   render() {
     const {
-      options, title, question,
+      options, i18n,
     } = this.props;
     const { selectedOption } = this.state;
+    const t = this.tNS;
     return (
       <View style={styles.container}>
         <ScrollView style={styles.content}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.question}>{question}</Text>
+          <Text style={styles.title}>{t('title')}</Text>
+          <Text style={styles.question}>{t('question')}</Text>
           { options.map(option => (
             <OptionButton
               key={option.value}
-              label={option.label}
+              label={t(`options.${option.value}`)}
               onPress={() => this.select(option.value)}
               selected={selectedOption === option.value}
               style={styles.button}
@@ -93,6 +105,14 @@ export default class SingleChoiceStep extends React.Component<Props, State> {
           <Button
             onPress={this.handlePreviousPress}
             title="Edellinen"
+          />
+          <Button
+            onPress={() => i18n.changeLanguage('fi')}
+            title="Finnish"
+          />
+          <Button
+            onPress={() => i18n.changeLanguage('en')}
+            title="English"
           />
           <Button
             disabled={!selectedOption}
@@ -139,3 +159,5 @@ styles = StyleSheet.create({
     borderColor: colors.med,
   },
 });
+
+export default translate()(SingleChoiceStep);

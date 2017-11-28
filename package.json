@@ -8,8 +8,10 @@
 		"flow": "flow"
 	},
 	"dependencies": {
+		"i18next": "^10.2.1",
 		"lodash": "^4.17.4",
 		"react": "16.0.0",
+		"react-i18next": "^7.0.2",
 		"react-native": "0.50.3",
 		"react-navigation": "^1.0.0-beta.21",
 		"recompose": "^0.26.0"
