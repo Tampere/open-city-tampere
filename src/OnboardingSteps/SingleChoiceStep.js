@@ -4,13 +4,13 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
   ScrollView,
 } from 'react-native';
 import { cloneDeep } from 'lodash';
 import { translate } from 'react-i18next';
 
 import OptionButton from 'src/OnboardingSteps/components/OptionButton';
+import StepBottomBar from 'src/OnboardingSteps/components/StepBottomBar';
 import colors from 'src/colors';
 // import type ColorSet from 'src/colors';
 
@@ -101,25 +101,11 @@ class SingleChoiceStep extends React.Component<Props, State> {
             />
           ))}
         </ScrollView>
-        <View style={styles.bottomBar}>
-          <Button
-            onPress={this.handlePreviousPress}
-            title="Edellinen"
-          />
-          <Button
-            onPress={() => i18n.changeLanguage('fi')}
-            title="Finnish"
-          />
-          <Button
-            onPress={() => i18n.changeLanguage('en')}
-            title="English"
-          />
-          <Button
-            disabled={!selectedOption}
-            onPress={this.handleNextPress}
-            title="Valmis"
-          />
-        </View>
+        <StepBottomBar
+          onPreviousPress={this.handlePreviousPress}
+          onNextPress={this.handleNextPress}
+          nextDisabled={!selectedOption}
+        />
       </View>
     );
   }
@@ -150,13 +136,6 @@ styles = StyleSheet.create({
   },
   button: {
     marginBottom: 10,
-  },
-  bottomBar: {
-    alignSelf: 'stretch',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderTopWidth: 1,
-    borderColor: colors.med,
   },
 });
 

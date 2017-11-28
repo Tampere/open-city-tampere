@@ -9,8 +9,10 @@ i18n
     resources: {
       en: {
         common: {
-          title: 'Tampere app common',
-          introduction: 'This text comes from i18next and is provided in english.',
+          title: 'Tampere app',
+          next: 'Next',
+          previous: 'Previous',
+          finish: 'Finish',
         },
         userTypeStep: {
           title: 'Tampere app',
@@ -24,7 +26,9 @@ i18n
       fi: {
         common: {
           title: 'Tampere app common',
-          introduction: 'Suomeksi tekstiä.',
+          next: 'Seuraava',
+          previous: 'Edellinen',
+          finish: 'Valmis',
         },
         userTypeStep: {
           title: 'Tampere app',
