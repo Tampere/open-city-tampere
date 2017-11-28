@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import type { StyleObj } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 
 import colors from 'src/colors';
 
@@ -13,7 +14,7 @@ type OptionButtonProps = {
   label: string,
   onPress: () => void,
   selected: boolean,
-  style: React.ViewStylePropTypes,
+  style: StyleObj,
 }
 
 let styles;

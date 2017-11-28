@@ -9,13 +9,19 @@ import {
 } from 'react-native';
 import { cloneDeep } from 'lodash';
 import OptionButton from 'src/OnboardingSteps/components/OptionButton';
-import colors from 'src/colors';
+import colors, { type ColorSet } from 'src/colors';
 // An onboarding step component where the user can select one option from many
 
+type Profile = {[string]: mixed};
+
 type Props = {
-  next: (any) => void, // provided by Onboarding
-  previous: () => void, // provided by Onboarding
-  profile: any, // provided by Onboarding
+  next: Profile => void, // provided by Onboarding
+  previous: Profile => void, // provided by Onboarding
+  profile: Profile, // provided by Onboarding
+  // step: number,
+  // totalSteps: number,
+  // colors: ColorSet,
+  // locale: string,
   options: Array<{value: string, label: string}>,
     // array of options, value is saved to the profile object, label is the text shown on button
   choiceKey: string, // choice is saved in the profile object with this key as the property name
@@ -34,9 +40,17 @@ export default class SingleChoiceStep extends React.Component<Props, State> {
     super(props);
 
     const selectedOption = props.profile[props.choiceKey] || null;
-    this.state = {
-      selectedOption,
-    };
+    if (typeof selectedOption === 'string') {
+      this.state = {
+        selectedOption,
+      };
+    } else {
+      console.log(`Profile attribute '${props.choiceKey}' has invaild type
+        '${typeof selectedOption}'. Expected a string. Overwriting.`);
+      this.state = {
+        selectedOption: null,
+      };
+    }
   }
 
   select = (option: string) => {
@@ -44,20 +58,20 @@ export default class SingleChoiceStep extends React.Component<Props, State> {
   }
 
   handleNextPress = () => {
-    const newProfile = cloneDeep(this.props.profile);
+    const newProfile: Profile = cloneDeep(this.props.profile);
     newProfile[this.props.choiceKey] = this.state.selectedOption;
     this.props.next(newProfile);
   }
 
   handlePreviousPress = () => {
-    const newProfile = cloneDeep(this.props.profile);
+    const newProfile: Profile = cloneDeep(this.props.profile);
     delete newProfile[this.props.choiceKey];
     this.props.previous(newProfile);
   }
 
   render() {
     const {
-      previous, options, title, question
+      options, title, question,
     } = this.props;
     const { selectedOption } = this.state;
     return (
