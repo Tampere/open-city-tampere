@@ -11,6 +11,8 @@ import { withProps } from 'recompose';
 import Onboarding from 'src/Onboarding';
 import SingleChoiceStep from 'src/OnboardingSteps/SingleChoiceStep';
 import colors from 'src/colors';
+// i18n must be imported so that it gets initialized
+// eslint-disable-next-line no-unused-vars
 import i18n from 'src/i18n';
 
 const HomeScreen = () => (
