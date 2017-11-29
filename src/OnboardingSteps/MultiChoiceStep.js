@@ -107,9 +107,8 @@ class MultiChoiceStep extends React.Component<Props, State> {
           <Text style={styles.question}>{t('question')}</Text>
           <View style={styles.buttonContainer}>
             { options.map(option => (
-              <View style={styles.buttonWrapper}>
+              <View key={option.value} style={styles.buttonWrapper}>
                 <OptionButton
-                  key={option.value}
                   label={t(`options.${option.value}`)}
                   onPress={() => this.toggle(option.value)}
                   selected={selectedOptions.includes(option.value)}
