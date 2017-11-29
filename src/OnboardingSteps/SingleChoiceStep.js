@@ -25,7 +25,7 @@ type Props = {
   // colors: ColorSet,
   // locale: string,
   options: Array<{value: string}>,
-    // array of options, value is saved to the profile object, label is the text shown on button
+    // array of options, value is saved to the profile object and used as translation key
   choiceKey: string, // choice is saved in the profile object with this key as the property name
   ns: string,
   t: string => string,
