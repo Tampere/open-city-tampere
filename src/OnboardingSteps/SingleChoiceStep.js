@@ -51,8 +51,6 @@ class SingleChoiceStep extends React.Component<Props, State> {
         selectedOption,
       };
     } else {
-      console.log(`Profile attribute '${props.choiceKey}' has invaild type
-        '${typeof selectedOption}'. Expected a string. Overwriting.`);
       this.state = {
         selectedOption: null,
       };
