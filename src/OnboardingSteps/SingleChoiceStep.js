@@ -29,7 +29,6 @@ type Props = {
   choiceKey: string, // choice is saved in the profile object with this key as the property name
   ns: string,
   t: string => string,
-  i18n: any,
 };
 
 type State = {
@@ -79,9 +78,7 @@ class SingleChoiceStep extends React.Component<Props, State> {
   }
 
   render() {
-    const {
-      options, i18n,
-    } = this.props;
+    const { options } = this.props;
     const { selectedOption } = this.state;
     const t = this.tWithNamespace;
     return (
