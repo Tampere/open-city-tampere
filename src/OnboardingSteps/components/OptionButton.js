@@ -32,7 +32,6 @@ const OptionButton = (props: OptionButtonProps) => (
 styles = StyleSheet.create({
   container: {
     padding: 10,
-    alignSelf: 'stretch',
     backgroundColor: colors.min,
     borderWidth: 2,
     borderColor: colors.max,
@@ -45,6 +44,7 @@ styles = StyleSheet.create({
   label: {
     fontSize: 20,
     color: colors.max,
+    textAlign: 'center',
   },
   labelSelected: {
     color: colors.min,
