@@ -10,6 +10,7 @@ import { withProps } from 'recompose';
 
 import Onboarding from 'src/Onboarding';
 import SingleChoiceStep from 'src/OnboardingSteps/SingleChoiceStep';
+import MultiChoiceStep from 'src/OnboardingSteps/MultiChoiceStep';
 import colors from 'src/colors';
 // i18n must be imported so that it gets initialized
 // eslint-disable-next-line no-unused-vars
@@ -50,9 +51,13 @@ const userTypeOptions = [
   { value: 'local' },
   { value: 'visitor' },
 ];
-const userTypeOptions2 = [
-  { value: 'local' },
-  { value: 'visitor' },
+const interestOptions = [
+  { value: 'restaurants' },
+  { value: 'movies' },
+  { value: 'family' },
+  { value: 'health' },
+  { value: 'cityPlanning' },
+  { value: 'exercise' },
 ];
 
 const userTypeProps = {
@@ -60,19 +65,19 @@ const userTypeProps = {
   options: userTypeOptions,
   ns: 'userTypeStep',
 };
-const userTypeProps2 = {
-  choiceKey: 'userType2',
-  options: userTypeOptions2,
-  ns: 'userTypeStep',
+const interestProps = {
+  choiceKey: 'interests',
+  options: interestOptions,
+  ns: 'interestStep',
 };
 
 const UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
-const UserTypeStep2: React.ComponentType<any> = withProps(userTypeProps2)(SingleChoiceStep);
+const InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
 
 const MyOnboarding = () => (
   <Onboarding
     onFinish={choices => console.warn('choices', choices)}
-    steps={[UserTypeStep, UserTypeStep2]}
+    steps={[UserTypeStep, InterestStep]}
   />
 );
 

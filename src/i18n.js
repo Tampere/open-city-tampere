@@ -22,6 +22,18 @@ i18n
             visitor: 'Visitor',
           },
         },
+        interestStep: {
+          title: 'Tampere app',
+          question: 'What are you interested in?',
+          options: {
+            restaurants: 'Restaurants',
+            movies: 'Movies',
+            family: 'Family',
+            health: 'Health',
+            cityPlanning: 'City Planning',
+            exercise: 'Exercise',
+          },
+        },
       },
       fi: {
         common: {
@@ -36,6 +48,18 @@ i18n
           options: {
             local: 'Tamperelainen',
             visitor: 'Vierailija',
+          },
+        },
+        interestStep: {
+          title: 'Tampere app',
+          question: 'Mitkä aiheet kiinnostavat sinua?',
+          options: {
+            restaurants: 'Ravintolat',
+            movies: 'Elokuvat',
+            family: 'Perhe',
+            health: 'Terveys',
+            cityPlanning: 'Kaupunki-suunnittelu',
+            exercise: 'Liikunta',
           },
         },
       },
