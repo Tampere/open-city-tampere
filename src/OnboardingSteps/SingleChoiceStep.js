@@ -75,7 +75,7 @@ class SingleChoiceStep extends React.Component<Props, State> {
     this.props.previous(newProfile);
   }
 
-  tNS = (key: string): string => {
+  tWithNamespace = (key: string): string => {
     const { t, ns } = this.props;
     return t(`${ns}:${key}`);
   }
@@ -85,7 +85,7 @@ class SingleChoiceStep extends React.Component<Props, State> {
       options, i18n,
     } = this.props;
     const { selectedOption } = this.state;
-    const t = this.tNS;
+    const t = this.tWithNamespace;
     return (
       <View style={styles.container}>
         <ScrollView style={styles.content}>
