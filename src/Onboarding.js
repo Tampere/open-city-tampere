@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import colors, { type ColorSet } from 'src/colors';
-import type Profile from 'src/types';
+import { type Profile } from 'src/types';
 
 const locale = 'fi';
 
