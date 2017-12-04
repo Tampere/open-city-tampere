@@ -3482,7 +3482,7 @@ onetime@^2.0.0:
 
 "open-city-modules@git+ssh://git@code.haltu.net/waltsu/open-city-modules.git":
   version "0.1.0"
-  resolved "git+ssh://git@code.haltu.net/waltsu/open-city-modules.git#50e7d94264de860b820ac610ccf7700312791d99"
+  resolved "git+ssh://git@code.haltu.net/waltsu/open-city-modules.git#491232d80dd348bc5977547036a97d8eb2b0ab18"
   dependencies:
     react-native-extended-stylesheet "^0.8.0"
 
