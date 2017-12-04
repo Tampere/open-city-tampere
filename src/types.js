@@ -1,2 +1,2 @@
 /* @flow */
-export type Profile = {[string]: mixed};
+export type Profile = {[string]: any};
