@@ -11,6 +11,7 @@ import { initColors, SingleChoiceStep, MultiChoiceStep, OnboardingResults } from
 import { translate } from 'react-i18next';
 
 import Onboarding from 'src/Onboarding';
+import ProfileTab from 'src/ProfileTab';
 import colors from 'src/colors';
 import { loadProfile, saveProfile } from 'src/profile';
 // i18n must be imported so that it gets initialized
@@ -29,8 +30,8 @@ const Tabs = TabNavigator({
   Home: {
     screen: OnboardingResults,
   },
-  Feedback: {
-    screen: FeedbackScreen,
+  Profile: {
+    screen: translate('profileTab')(ProfileTab),
   },
 }, {
   tabBarComponent: TabBarBottom,
@@ -129,6 +130,7 @@ class App extends React.Component<Props, State> {
       colors,
       locale: 'fi',
       profile,
+      restartOnboarding: this.restartOnboarding,
     };
     return <Tabs screenProps={screenProps} />;
   }

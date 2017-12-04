@@ -34,6 +34,12 @@ i18n
             exercise: 'Exercise',
           },
         },
+        profileTab: {
+          userType: 'User type',
+          interests: 'Interests',
+          restartOnboarding: 'Edit your choices',
+          changeLanguage: 'Change language',
+        },
       },
       fi: {
         common: {
@@ -61,6 +67,12 @@ i18n
             cityPlanning: 'Kaupunki-suunnittelu',
             exercise: 'Liikunta',
           },
+        },
+        profileTab: {
+          userType: 'Käyttäjätyyppi',
+          interests: 'Kiinnostuksen kohteet',
+          restartOnboarding: 'Muuta valintojasi',
+          changeLanguage: 'Vaihda kieltä',
         },
       },
     },
