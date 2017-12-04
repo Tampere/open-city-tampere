@@ -7,7 +7,7 @@ import { type Profile } from 'src/types';
 const locale = 'fi';
 
 /*
-  Takes steps as children.
+  Receives steps as an array of components.
   Keeps the index of current step and data given by the user in its state.
   Renders the current step which gets the following props:
     next: a function that takes a profile object as an argument and goes to the next step
@@ -17,9 +17,6 @@ const locale = 'fi';
     totalSteps: total number of steps in onboarding
   Takes onFinish callback as a prop, which is called with the final profile object at
   the end of the last step.
-
-  TODO: define the shape of the profile object somewhere instead of using any
-    * not possible because modules should know the Profile type also
 */
 
 export type StepProps = {
