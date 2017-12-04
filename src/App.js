@@ -4,23 +4,19 @@ import {
   Text,
   View,
 } from 'react-native';
+// $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { withProps } from 'recompose';
-// import { translate } from 'react-i18next';
+import { initColors, SingleChoiceStep, MultiChoiceStep, OnboardingResults } from 'open-city-modules';
+import { translate } from 'react-i18next';
 
 import Onboarding from 'src/Onboarding';
-import SingleChoiceStep from 'src/OnboardingSteps/SingleChoiceStep';
-import MultiChoiceStep from 'src/OnboardingSteps/MultiChoiceStep';
 import colors from 'src/colors';
 // i18n must be imported so that it gets initialized
 // eslint-disable-next-line no-unused-vars
 import i18n from 'src/i18n';
 
-const HomeScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Home Screen</Text>
-  </View>
-);
+initColors(colors);
 
 const FeedbackScreen = () => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -28,9 +24,9 @@ const FeedbackScreen = () => (
   </View>
 );
 
-const App = TabNavigator({
+const Tabs = TabNavigator({
   Home: {
-    screen: HomeScreen,
+    screen: OnboardingResults,
   },
   Feedback: {
     screen: FeedbackScreen,
@@ -71,15 +67,43 @@ const interestProps = {
   ns: 'interestStep',
 };
 
-const UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
-const InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
+let UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
+UserTypeStep = translate()(UserTypeStep);
+let InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
+InterestStep = translate()(InterestStep);
 
-const MyOnboarding = () => (
+const MyOnboarding = ({ onFinish }) => (
   <Onboarding
-    onFinish={choices => console.warn('choices', choices)}
+    onFinish={onFinish}
     steps={[UserTypeStep, InterestStep]}
   />
 );
 
-// export default App;
-export default MyOnboarding;
+type Props = {};
+type State = { showOnboarding: boolean };
+class App extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      showOnboarding: true,
+    };
+  }
+
+  hideOnboarding = () => {
+    this.setState({ showOnboarding: false });
+  }
+
+  render() {
+    if (this.state.showOnboarding) {
+      return <MyOnboarding onFinish={this.hideOnboarding} />;
+    }
+    const screenProps = {
+      colors,
+      locale: 'fi',
+    };
+    return <Tabs screenProps={screenProps} />;
+  }
+}
+
+export default App;
