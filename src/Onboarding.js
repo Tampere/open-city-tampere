@@ -2,6 +2,7 @@
 import * as React from 'react';
 
 import colors, { type ColorSet } from 'src/colors';
+import type Profile from 'src/types';
 
 const locale = 'fi';
 
@@ -20,7 +21,6 @@ const locale = 'fi';
   TODO: define the shape of the profile object somewhere instead of using any
     * not possible because modules should know the Profile type also
 */
-type Profile = any;
 
 export type StepProps = {
   next: Profile => void,
