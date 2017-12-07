@@ -13,6 +13,7 @@ i18n
           next: 'Next',
           previous: 'Previous',
           finish: 'Finish',
+          'city-change-title': 'Open another city\'s app',
         },
         userTypeStep: {
           title: 'Tampere app',
@@ -47,6 +48,7 @@ i18n
           next: 'Seuraava',
           previous: 'Edellinen',
           finish: 'Valmis',
+          'city-change-title': 'Avaa toisen kaupungin sovellus',
         },
         userTypeStep: {
           title: 'Tampere app',
