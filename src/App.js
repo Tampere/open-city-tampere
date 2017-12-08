@@ -9,15 +9,15 @@ import { withProps } from 'recompose';
 import { initColors, SingleChoiceStep, MultiChoiceStep, OnboardingResults } from 'open-city-modules';
 import { translate } from 'react-i18next';
 
-import Onboarding from 'src/Onboarding';
-import ProfileTab from 'src/ProfileTab';
-import Header from 'src/Header';
-import CityChangeModal from 'src/CityChangeModal';
-import colors from 'src/colors';
+import Onboarding from 'src/components/Onboarding';
+import ProfileTab from 'src/components/ProfileTab';
+import Header from 'src/components/Header';
+import CityChangeModal from 'src/components/CityChangeModal';
+import colors from 'src/config/colors';
 import { loadProfile, saveProfile } from 'src/profile';
 // i18n must be imported so that it gets initialized
 // eslint-disable-next-line no-unused-vars
-import i18n from 'src/i18n';
+import i18n from 'src/config/translations';
 
 initColors(colors);
 
