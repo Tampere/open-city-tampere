@@ -6,7 +6,7 @@ import {
 // $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { withProps } from 'recompose';
-import { initColors, SingleChoiceStep, MultiChoiceStep } from 'open-city-modules';
+import { initColors } from 'open-city-modules';
 import { translate } from 'react-i18next';
 
 import tabs from 'src/config/tabs';
