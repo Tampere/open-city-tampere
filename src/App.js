@@ -6,11 +6,11 @@ import {
 // $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { withProps } from 'recompose';
-import { initColors, SingleChoiceStep, MultiChoiceStep, OnboardingResults } from 'open-city-modules';
+import { initColors, SingleChoiceStep, MultiChoiceStep } from 'open-city-modules';
 import { translate } from 'react-i18next';
 
-import Onboarding from 'src/components/Onboarding';
-import ProfileTab from 'src/components/ProfileTab';
+import tabs from 'src/config/tabs';
+import MyOnboarding from 'src/config/onboarding';
 import Header from 'src/components/Header';
 import CityChangeModal from 'src/components/CityChangeModal';
 import colors from 'src/config/colors';
@@ -21,14 +21,7 @@ import i18n from 'src/config/translations';
 
 initColors(colors);
 
-const Tabs = TabNavigator({
-  Home: {
-    screen: OnboardingResults,
-  },
-  Profile: {
-    screen: translate('profileTab')(ProfileTab),
-  },
-}, {
+const Tabs = TabNavigator(tabs, {
   tabBarComponent: TabBarBottom,
   tabBarPosition: 'bottom',
   swipeEnabled: false,
@@ -39,42 +32,6 @@ const Tabs = TabNavigator({
     inactiveBackgroundColor: colors.min,
   },
 });
-
-const userTypeOptions = [
-  { value: 'local' },
-  { value: 'visitor' },
-];
-const interestOptions = [
-  { value: 'restaurants' },
-  { value: 'movies' },
-  { value: 'family' },
-  { value: 'health' },
-  { value: 'cityPlanning' },
-  { value: 'exercise' },
-];
-
-const userTypeProps = {
-  choiceKey: 'userType',
-  options: userTypeOptions,
-  ns: 'userTypeStep',
-};
-const interestProps = {
-  choiceKey: 'interests',
-  options: interestOptions,
-  ns: 'interestStep',
-};
-
-let UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
-UserTypeStep = translate()(UserTypeStep);
-let InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
-InterestStep = translate()(InterestStep);
-
-const MyOnboarding = ({ onFinish }) => (
-  <Onboarding
-    onFinish={onFinish}
-    steps={[UserTypeStep, InterestStep]}
-  />
-);
 
 type Props = {};
 type State = {
