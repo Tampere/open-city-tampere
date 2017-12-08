@@ -1,7 +1,6 @@
 /* @flow */
 import * as React from 'react';
 import {
-  Text,
   View,
 } from 'react-native';
 // $FlowFixMe
@@ -21,12 +20,6 @@ import { loadProfile, saveProfile } from 'src/profile';
 import i18n from 'src/i18n';
 
 initColors(colors);
-
-const FeedbackScreen = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Feedback Screen</Text>
-  </View>
-);
 
 const Tabs = TabNavigator({
   Home: {

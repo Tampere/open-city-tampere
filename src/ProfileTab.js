@@ -18,14 +18,12 @@ type ChoiceListProps = {
 
 let styles;
 
-const ChoiceList = (props: ChoiceListProps) => {
-  return (
-    <View>
-      <Text style={styles.text}>{props.title}</Text>
-      { props.choices.map(item => <Text style={styles.text} key={item}>• {item}</Text>) }
-    </View>
-  );
-};
+const ChoiceList = (props: ChoiceListProps) => (
+  <View>
+    <Text style={styles.text}>{props.title}</Text>
+    { props.choices.map(item => <Text style={styles.text} key={item}>• {item}</Text>) }
+  </View>
+);
 
 type Props = {
   screenProps: {
