@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import colors from 'src/colors';
+import colors from 'src/config/colors';
 
 type Props = {
   onPress: () => void,

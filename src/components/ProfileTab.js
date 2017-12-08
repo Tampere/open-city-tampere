@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { type Profile } from 'src/types';
 
-import colors from 'src/colors';
+import colors from 'src/config/colors';
 
 type ChoiceListProps = {
   title: string,

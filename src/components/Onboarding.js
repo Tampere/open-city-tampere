@@ -1,7 +1,7 @@
 /* @flow */
 import * as React from 'react';
 
-import colors, { type ColorSet } from 'src/colors';
+import colors, { type ColorSet } from 'src/config/colors';
 import { type Profile } from 'src/types';
 
 const locale = 'fi';
