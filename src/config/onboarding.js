@@ -1,7 +1,10 @@
 import Onboarding from 'src/components/Onboarding';
 import { translate } from 'react-i18next';
 import { withProps } from 'recompose';
-import { SingleChoiceStep, createMultiChoiceStep, MultiChoiceView } from 'open-city-modules';
+import {
+  createSingleChoiceStep, SingleChoiceView,
+  createMultiChoiceStep, MultiChoiceView,
+} from 'open-city-modules';
 
 const userTypeOptions = [
   { value: 'local' },
@@ -19,7 +22,6 @@ const interestOptions = [
 const userTypeProps = {
   choiceKey: 'userType',
   options: userTypeOptions,
-  ns: 'userTypeStep',
 };
 const interestProps = {
   choiceKey: 'interests',
@@ -27,8 +29,9 @@ const interestProps = {
 };
 
 const MultiChoiceStep = createMultiChoiceStep(MultiChoiceView);
+const SingleChoiceStep = createSingleChoiceStep(SingleChoiceView);
 let UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
-UserTypeStep = translate()(UserTypeStep);
+UserTypeStep = translate('userTypeStep')(UserTypeStep);
 let InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
 InterestStep = translate('interestStep')(InterestStep);
 
