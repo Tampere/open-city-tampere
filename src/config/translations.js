@@ -15,6 +15,14 @@ i18n
           finish: 'Finish',
           'city-change-title': 'Open another city\'s app',
         },
+        languageStep: {
+          question: 'Choose a language',
+          options: {
+            fi: 'Suomeksi',
+            sv: 'På svenska',
+            en: 'In english',
+          },
+        },
         userTypeStep: {
           title: 'Tampere app',
           question: 'Are you',
