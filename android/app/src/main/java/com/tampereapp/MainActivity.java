@@ -1,4 +1,4 @@
-package com.opencityskeleton;
+package com.tampereapp;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "OpenCitySkeleton";
+        return "TampereApp";
     }
 }

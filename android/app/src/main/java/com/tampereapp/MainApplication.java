@@ -1,4 +1,4 @@
-package com.opencityskeleton;
+package com.tampereapp;
 
 import android.app.Application;
 
