@@ -2,8 +2,9 @@ import Onboarding from 'src/components/Onboarding';
 import { translate } from 'react-i18next';
 import { withProps } from 'recompose';
 import {
-  createSingleChoiceStep, SingleChoiceView,
-  createMultiChoiceStep, MultiChoiceView,
+  createSingleChoiceStep,
+  createMultiChoiceStep,
+  ChoiceView,
 } from 'open-city-modules';
 import i18n from 'src/config/translations';
 
@@ -38,15 +39,18 @@ const interestProps = {
   options: interestOptions,
 };
 
-let LanguageStep = createSingleChoiceStep(SingleChoiceView, (profile) => {
+const ListChoiceView = withProps({ mode: 'list' })(ChoiceView);
+const GridChoiceView = withProps({ mode: 'grid' })(ChoiceView);
+
+let LanguageStep = createSingleChoiceStep(ListChoiceView, (profile) => {
   if (profile.locale) {
     i18n.changeLanguage(profile.locale);
   }
 });
 LanguageStep = withProps(languageProps)(LanguageStep);
 LanguageStep = translate('languageStep')(LanguageStep);
-const MultiChoiceStep = createMultiChoiceStep(MultiChoiceView);
-const SingleChoiceStep = createSingleChoiceStep(SingleChoiceView);
+const MultiChoiceStep = createMultiChoiceStep(GridChoiceView);
+const SingleChoiceStep = createSingleChoiceStep(ListChoiceView);
 let UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
 UserTypeStep = translate('userTypeStep')(UserTypeStep);
 let InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
