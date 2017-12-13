@@ -8,7 +8,9 @@ import {
 } from 'open-city-modules';
 import i18n from 'src/config/translations';
 import colors from 'src/config/colors';
-
+import finlayson from 'TampereApp/img/areas/finlayson.png';
+import finlaysonGrey from 'TampereApp/img/areas/finlayson_grey.png';
+// Options (choices) for steps. Each option creates a new button.
 const languageOptions = [
   { value: 'fi' },
   { value: 'sv' },
@@ -26,6 +28,14 @@ const interestOptions = [
   { value: 'cityPlanning', icon: 'city' },
   { value: 'exercise', icon: 'run' },
 ];
+const areaOptions = [
+  { value: 'tammela', image: finlaysonGrey, imageSelected: finlayson },
+  { value: 'tahmela', image: finlaysonGrey, imageSelected: finlayson },
+  { value: 'keskusta', image: finlaysonGrey, imageSelected: finlayson },
+  { value: 'ratina', image: finlaysonGrey, imageSelected: finlayson },
+  { value: 'pispala', image: finlaysonGrey, imageSelected: finlayson },
+  { value: 'finlayson', image: finlaysonGrey, imageSelected: finlayson },
+];
 
 const languageProps = {
   choiceKey: 'locale',
@@ -38,6 +48,10 @@ const userTypeProps = {
 const interestProps = {
   choiceKey: 'interests',
   options: interestOptions,
+};
+const areaProps = {
+  choiceKey: 'areas',
+  options: areaOptions,
 };
 
 const listButtonProps = {
@@ -74,8 +88,22 @@ const interestButtonProps = {
   iconColor: colors.max,
   iconSelectedColor: colors.max,
 };
+
+const areaButtonProps = {
+  labelStyle: {
+    color: colors.max,
+  },
+  labelSelectedStyle: {
+    color: colors.yellow,
+  },
+  containerSelectedStyle: {
+    borderColor: 'transparent',
+  },
+};
+
 const ListChoiceView = withProps({ mode: 'list', buttonProps: listButtonProps })(ChoiceView);
-const GridChoiceView = withProps({ mode: 'grid', buttonProps: interestButtonProps })(ChoiceView);
+const InterestChoiceView = withProps({ mode: 'grid', buttonProps: interestButtonProps })(ChoiceView);
+const AreaChoiceView = withProps({ mode: 'grid', buttonProps: areaButtonProps })(ChoiceView);
 
 let LanguageStep = createSingleChoiceStep(ListChoiceView, (profile) => {
   if (profile.locale) {
@@ -84,15 +112,18 @@ let LanguageStep = createSingleChoiceStep(ListChoiceView, (profile) => {
 });
 LanguageStep = withProps(languageProps)(LanguageStep);
 LanguageStep = translate('languageStep')(LanguageStep);
-const MultiChoiceStep = createMultiChoiceStep(GridChoiceView);
+const InterestChoiceStep = createMultiChoiceStep(InterestChoiceView);
+const AreaChoiceStep = createMultiChoiceStep(AreaChoiceView);
 const SingleChoiceStep = createSingleChoiceStep(ListChoiceView);
-let UserTypeStep: React.ComponentType<any> = withProps(userTypeProps)(SingleChoiceStep);
+let UserTypeStep = withProps(userTypeProps)(SingleChoiceStep);
 UserTypeStep = translate('userTypeStep')(UserTypeStep);
-let InterestStep: React.ComponentType<any> = withProps(interestProps)(MultiChoiceStep);
+let InterestStep = withProps(interestProps)(InterestChoiceStep);
 InterestStep = translate('interestStep')(InterestStep);
+let AreaStep = withProps(areaProps)(AreaChoiceStep);
+AreaStep = translate('areaStep')(AreaStep);
 
 const steps = {
-  steps: [LanguageStep, UserTypeStep, InterestStep],
+  steps: [LanguageStep, UserTypeStep, InterestStep, AreaStep],
 };
 
 const MyOnboarding = withProps(steps)(Onboarding);

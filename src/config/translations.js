@@ -43,6 +43,18 @@ i18n
             exercise: 'Exercise',
           },
         },
+        areaStep: {
+          title: 'Tampere app',
+          question: 'What areas are you interested in?',
+          options: {
+            tammela: 'Tammela',
+            tahmela: 'Tahmela',
+            keskusta: 'Keskusta',
+            ratina: 'Ratina',
+            pispala: 'Pispala',
+            finlayson: 'Finlayson',
+          },
+        },
         profileTab: {
           userType: 'User type',
           interests: 'Interests',
@@ -76,6 +88,18 @@ i18n
             health: 'Terveys',
             cityPlanning: 'Kaupunki-suunnittelu',
             exercise: 'Liikunta',
+          },
+        },
+        areaStep: {
+          title: 'Tampere app',
+          question: 'Mitkä alueet sinua kiinnostavat?',
+          options: {
+            tammela: 'Tammela',
+            tahmela: 'Tahmela',
+            keskusta: 'Keskusta',
+            ratina: 'Ratina',
+            pispala: 'Pispala',
+            finlayson: 'Finlayson',
           },
         },
         profileTab: {
