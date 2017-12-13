@@ -6,9 +6,9 @@ export type ColorSet = {
 }
 
 const colors: ColorSet = {
-  max: '#000000',
-  med: '#d54b0b',
-  min: '#FFFFFF',
+  max: '#FFFFFF',
+  med: '#D45049',
+  min: '#888888',
 };
 
 export default colors;

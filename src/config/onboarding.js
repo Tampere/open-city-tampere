@@ -7,6 +7,7 @@ import {
   ChoiceView,
 } from 'open-city-modules';
 import i18n from 'src/config/translations';
+import colors from 'src/config/colors';
 
 const languageOptions = [
   { value: 'fi' },
@@ -18,12 +19,12 @@ const userTypeOptions = [
   { value: 'visitor' },
 ];
 const interestOptions = [
-  { value: 'restaurants' },
-  { value: 'movies' },
-  { value: 'family' },
-  { value: 'health' },
-  { value: 'cityPlanning' },
-  { value: 'exercise' },
+  { value: 'restaurants', icon: 'silverware' },
+  { value: 'movies', icon: 'movie' },
+  { value: 'family', icon: 'baby-buggy' },
+  { value: 'health', icon: 'hospital' },
+  { value: 'cityPlanning', icon: 'city' },
+  { value: 'exercise', icon: 'run' },
 ];
 
 const languageProps = {
@@ -39,8 +40,42 @@ const interestProps = {
   options: interestOptions,
 };
 
-const ListChoiceView = withProps({ mode: 'list' })(ChoiceView);
-const GridChoiceView = withProps({ mode: 'grid' })(ChoiceView);
+const listButtonProps = {
+  containerStyle: {
+    borderWidth: 2,
+    height: 50,
+    borderRadius: 50 / 2,
+    borderColor: colors.max,
+    backgroundColor: colors.min,
+    marginBottom: 10,
+  },
+  containerSelectedStyle: {
+    borderColor: colors.med,
+    backgroundColor: colors.med,
+  },
+  labelStyle: {
+    color: colors.max,
+  },
+  labelSelectedStyle: {
+    color: colors.max,
+  },
+};
+
+const interestButtonProps = {
+  labelStyle: {
+    color: colors.max,
+  },
+  labelSelectedStyle: {
+    color: colors.max,
+  },
+  containerSelectedStyle: {
+    borderColor: colors.max,
+  },
+  iconColor: colors.max,
+  iconSelectedColor: colors.max,
+};
+const ListChoiceView = withProps({ mode: 'list', buttonProps: listButtonProps })(ChoiceView);
+const GridChoiceView = withProps({ mode: 'grid', buttonProps: interestButtonProps })(ChoiceView);
 
 let LanguageStep = createSingleChoiceStep(ListChoiceView, (profile) => {
   if (profile.locale) {
