@@ -10,6 +10,8 @@ import i18n from 'src/config/translations';
 import colors from 'src/config/colors';
 import finlayson from 'TampereApp/img/areas/finlayson.png';
 import finlaysonGrey from 'TampereApp/img/areas/finlayson_grey.png';
+import bg1 from 'TampereApp/img/background/bg1.png';
+
 // Options (choices) for steps. Each option creates a new button.
 const languageOptions = [
   { value: 'fi' },
@@ -115,6 +117,10 @@ const ListChoiceView = withProps({
   buttonProps: listButtonProps,
   containerStyle,
   questionStyle,
+  contentStyle: {
+    marginTop: 250,
+  },
+  bgImage: bg1,
 })(ChoiceView);
 const InterestChoiceView = withProps({
   mode: 'grid',

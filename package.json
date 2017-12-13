@@ -10,7 +10,7 @@
 	"dependencies": {
 		"i18next": "^10.2.1",
 		"lodash": "^4.17.4",
-		"open-city-modules": "git+ssh://git@code.haltu.net/c-tampere/open-city-modules.git",
+		"open-city-modules": "git+ssh://git@github.com/haltu/open-city-modules.git",
 		"react": "16.0.0",
 		"react-i18next": "^7.0.2",
 		"react-native": "0.50.3",
