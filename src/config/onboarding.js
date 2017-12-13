@@ -59,8 +59,8 @@ const listButtonProps = {
     borderWidth: 2,
     height: 50,
     borderRadius: 50 / 2,
-    borderColor: colors.max,
-    backgroundColor: colors.min,
+    borderColor: colors.min,
+    backgroundColor: colors.max,
     marginBottom: 10,
   },
   containerSelectedStyle: {
@@ -68,42 +68,66 @@ const listButtonProps = {
     backgroundColor: colors.med,
   },
   labelStyle: {
-    color: colors.max,
+    color: colors.min,
   },
   labelSelectedStyle: {
-    color: colors.max,
+    color: colors.min,
   },
 };
 
 const interestButtonProps = {
   labelStyle: {
-    color: colors.max,
+    color: colors.min,
   },
   labelSelectedStyle: {
-    color: colors.max,
+    color: colors.min,
+  },
+  containerStyle: {
+    backgroundColor: 'transparent',
   },
   containerSelectedStyle: {
-    borderColor: colors.max,
+    borderColor: colors.min,
   },
-  iconColor: colors.max,
-  iconSelectedColor: colors.max,
+  iconColor: colors.min,
+  iconSelectedColor: colors.min,
 };
 
 const areaButtonProps = {
   labelStyle: {
-    color: colors.max,
+    color: colors.min,
   },
   labelSelectedStyle: {
     color: colors.yellow,
+  },
+  containerStyle: {
+    backgroundColor: 'transparent',
   },
   containerSelectedStyle: {
     borderColor: 'transparent',
   },
 };
 
-const ListChoiceView = withProps({ mode: 'list', buttonProps: listButtonProps })(ChoiceView);
-const InterestChoiceView = withProps({ mode: 'grid', buttonProps: interestButtonProps })(ChoiceView);
-const AreaChoiceView = withProps({ mode: 'grid', buttonProps: areaButtonProps })(ChoiceView);
+const containerStyle = { backgroundColor: colors.max };
+const questionStyle = { color: colors.min };
+
+const ListChoiceView = withProps({
+  mode: 'list',
+  buttonProps: listButtonProps,
+  containerStyle,
+  questionStyle,
+})(ChoiceView);
+const InterestChoiceView = withProps({
+  mode: 'grid',
+  buttonProps: interestButtonProps,
+  containerStyle,
+  questionStyle,
+})(ChoiceView);
+const AreaChoiceView = withProps({
+  mode: 'grid',
+  buttonProps: areaButtonProps,
+  containerStyle,
+  questionStyle,
+})(ChoiceView);
 
 let LanguageStep = createSingleChoiceStep(ListChoiceView, (profile) => {
   if (profile.locale) {
