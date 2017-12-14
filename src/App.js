@@ -5,9 +5,7 @@ import {
 } from 'react-native';
 // $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
-import { withProps } from 'recompose';
 import { initColors } from 'open-city-modules';
-import { translate } from 'react-i18next';
 
 import tabs from 'src/config/tabs';
 import MyOnboarding from 'src/config/onboarding';

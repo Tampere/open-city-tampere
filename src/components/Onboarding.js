@@ -32,9 +32,11 @@ export type StepProps = {
 type Props = {
   onFinish: Profile => void,
   steps: Array<React.ComponentType<StepProps>>,
+  splash?: React.ComponentType<any>,
 };
 
 type State = {
+  showSplash: boolean,
   step: number,
   profile: Profile,
 };
@@ -44,6 +46,7 @@ export default class Onboarding extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+      showSplash: true,
       step: 0,
       profile: {},
     };
@@ -65,6 +68,8 @@ export default class Onboarding extends React.Component<Props, State> {
     }
   }
 
+  dismissSplash = () => this.setState({ showSplash: false });
+
   render() {
     const { step } = this.state;
     const CurrentStep = this.props.steps[step];
@@ -77,6 +82,10 @@ export default class Onboarding extends React.Component<Props, State> {
       colors,
       locale,
     };
+    const Splash = this.props.splash;
+    if (this.state.showSplash && Splash) {
+      return <Splash dismiss={this.dismissSplash} />;
+    }
     return <CurrentStep {...stepProps} />;
   }
 }
