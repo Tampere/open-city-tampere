@@ -11,6 +11,9 @@ import colors from 'src/config/colors';
 import finlayson from 'TampereApp/img/areas/finlayson.png';
 import finlaysonGrey from 'TampereApp/img/areas/finlayson_grey.png';
 import bg1 from 'TampereApp/img/background/bg1.png';
+import bg2 from 'TampereApp/img/background/bg2.png';
+// eslint-disable-next-line camelcase
+import bg3_4 from 'TampereApp/img/background/bg3_4.png';
 
 // Options (choices) for steps. Each option creates a new button.
 const languageOptions = [
@@ -39,6 +42,7 @@ const areaOptions = [
   { value: 'finlayson', image: finlaysonGrey, imageSelected: finlayson },
 ];
 
+// Props for step components
 const languageProps = {
   choiceKey: 'locale',
   options: languageOptions,
@@ -56,13 +60,14 @@ const areaProps = {
   options: areaOptions,
 };
 
+// Styling props for view components
 const listButtonProps = {
   containerStyle: {
     borderWidth: 2,
     height: 50,
     borderRadius: 50 / 2,
     borderColor: colors.min,
-    backgroundColor: colors.max,
+    backgroundColor: 'transparent',
     marginBottom: 10,
   },
   containerSelectedStyle: {
@@ -111,45 +116,59 @@ const areaButtonProps = {
 
 const containerStyle = { backgroundColor: colors.max };
 const questionStyle = { color: colors.min };
+const bottomBarProps = { fgColor: colors.min, bgColor: 'transparent' };
 
 const ListChoiceView = withProps({
   mode: 'list',
   buttonProps: listButtonProps,
   containerStyle,
   questionStyle,
-  contentStyle: {
-    marginTop: 250,
-  },
-  bgImage: bg1,
+  contentStyle: { marginTop: 250 },
+  bottomBarProps,
 })(ChoiceView);
+const LanguageView = withProps({
+  bgImage: bg1,
+})(ListChoiceView);
+const UserTypeView = withProps({
+  bgImage: bg2,
+})(ListChoiceView);
 const InterestChoiceView = withProps({
   mode: 'grid',
   buttonProps: interestButtonProps,
   containerStyle,
+  contentStyle: { paddingTop: 30 },
   questionStyle,
+  bgImage: bg3_4,
+  bottomBarProps,
 })(ChoiceView);
 const AreaChoiceView = withProps({
   mode: 'grid',
   buttonProps: areaButtonProps,
   containerStyle,
+  contentStyle: { paddingTop: 30 },
   questionStyle,
+  bgImage: bg3_4,
+  bottomBarProps,
 })(ChoiceView);
 
-let LanguageStep = createSingleChoiceStep(ListChoiceView, (profile) => {
+let LanguageStep = createSingleChoiceStep(LanguageView, (profile) => {
   if (profile.locale) {
     i18n.changeLanguage(profile.locale);
   }
 });
 LanguageStep = withProps(languageProps)(LanguageStep);
 LanguageStep = translate('languageStep')(LanguageStep);
-const InterestChoiceStep = createMultiChoiceStep(InterestChoiceView);
-const AreaChoiceStep = createMultiChoiceStep(AreaChoiceView);
-const SingleChoiceStep = createSingleChoiceStep(ListChoiceView);
-let UserTypeStep = withProps(userTypeProps)(SingleChoiceStep);
+
+let UserTypeStep = createSingleChoiceStep(UserTypeView);
+UserTypeStep = withProps(userTypeProps)(UserTypeStep);
 UserTypeStep = translate('userTypeStep')(UserTypeStep);
-let InterestStep = withProps(interestProps)(InterestChoiceStep);
+
+let InterestStep = createMultiChoiceStep(InterestChoiceView);
+InterestStep = withProps(interestProps)(InterestStep);
 InterestStep = translate('interestStep')(InterestStep);
-let AreaStep = withProps(areaProps)(AreaChoiceStep);
+
+let AreaStep = createMultiChoiceStep(AreaChoiceView);
+AreaStep = withProps(areaProps)(AreaStep);
 AreaStep = translate('areaStep')(AreaStep);
 
 const steps = {
