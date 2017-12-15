@@ -5,6 +5,7 @@ import {
   createSingleChoiceStep,
   createMultiChoiceStep,
   ChoiceView,
+  SplashScreen,
 } from 'open-city-modules';
 import i18n from 'src/config/translations';
 import colors from 'src/config/colors';
@@ -14,6 +15,8 @@ import bg1 from 'TampereApp/img/background/bg1.png';
 import bg2 from 'TampereApp/img/background/bg2.png';
 // eslint-disable-next-line camelcase
 import bg3_4 from 'TampereApp/img/background/bg3_4.png';
+import bgSplash from 'TampereApp/img/background/bg_front.png';
+import logo from 'TampereApp/img/tre_vaakuna.png';
 
 // Options (choices) for steps. Each option creates a new button.
 const languageOptions = [
@@ -171,10 +174,20 @@ let AreaStep = createMultiChoiceStep(AreaChoiceView);
 AreaStep = withProps(areaProps)(AreaStep);
 AreaStep = translate('areaStep')(AreaStep);
 
-const steps = {
+const MySplash = withProps({
+  bgImage: bgSplash,
+  logo,
+  cityName: 'TAMPERE',
+  welcomeText: 'Tervetuloa käyttämään kaupunkisovellusta',
+  beginText: 'ALOITA',
+  textColor: 'white',
+  marginTop: 400,
+})(SplashScreen);
+const onboardingProps = {
+  splash: MySplash,
   steps: [LanguageStep, UserTypeStep, InterestStep, AreaStep],
 };
 
-const MyOnboarding = withProps(steps)(Onboarding);
+const MyOnboarding = withProps(onboardingProps)(Onboarding);
 
 export default MyOnboarding;
