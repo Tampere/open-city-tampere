@@ -6,7 +6,7 @@ import { withProps } from 'recompose';
 
 const tabs = {
   Home: {
-    screen: withProps({ src: 'https://google.fi', locale: 'en' })(WebViewModule),
+    screen: withProps({ src: 'http://tampereenpalvelut.fi/', locale: 'en' })(WebViewModule),
   },
   Profile: {
     screen: translate('profileTab')(ProfileTab),
