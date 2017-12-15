@@ -64,6 +64,12 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>MiloPro-Bold.otf</string>
+		<string>MiloPro-BoldIta.otf</string>
+		<string>MiloPro-Exlig.otf</string>
+		<string>MiloPro-ExligIta.otf</string>
+		<string>MiloPro-Text.otf</string>
+		<string>MiloPro-TextIta.otf</string>
 	</array>
 </dict>
 </plist>
