@@ -1,0 +1,13 @@
+{
+  // API URLs
+  "OPEN311_API_URL": "http://feedback.tampere.fi/v1/",
+  "OPEN311_SERVICES": "services.json",
+  "OPEN311_SERVICE_LIST_LOCALE": "?locale=",
+  "OPEN311_REQUESTS": "requests.json",
+  "OPEN311_SERVICE_REQUEST_BASE_URL": "requests/",
+  "OPEN311_SERVICE_REQUEST_PARAMETERS_URL": ".json?extensions=true",
+  "OPEN311_SERVICE_REQUESTS_EXTENSIONS_POSTFIX": "&extensions=true",
+
+  // API Key for sending new service requests
+  "OPEN311_SEND_SERVICE_API_KEY": "",
+}
