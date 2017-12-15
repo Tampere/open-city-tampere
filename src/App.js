@@ -24,9 +24,9 @@ const Tabs = TabNavigator(tabs, {
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   tabBarOptions: {
-    activeTintColor: colors.max,
+    activeTintColor: colors.med,
     activeBackgroundColor: colors.min,
-    inactiveTintColor: colors.med,
+    inactiveTintColor: colors.max,
     inactiveBackgroundColor: colors.min,
   },
 });
