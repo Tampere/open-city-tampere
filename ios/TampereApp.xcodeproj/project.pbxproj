@@ -48,6 +48,12 @@
 		9659BE997DDE49C7B53B828D /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF54CFCEAF99481081F41085 /* Octicons.ttf */; };
 		8CDFCF8A9D78473AB3760EEC /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B222F53290424451ADB92E39 /* SimpleLineIcons.ttf */; };
 		A51A0944EBCD4842899C415E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45F4C975660F471F8C66A635 /* Zocial.ttf */; };
+		EB6C2658FFF542338C86BB79 /* MiloPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEB29722AA924C9190421C7A /* MiloPro-Bold.otf */; };
+		3F613F37117C4AB8A39D205B /* MiloPro-BoldIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85F623F849644106BE08C3D6 /* MiloPro-BoldIta.otf */; };
+		23E455A829544AA282BE34CB /* MiloPro-Exlig.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B77AE02C70A46D1937FFF69 /* MiloPro-Exlig.otf */; };
+		4EAF793980ED42E893322D36 /* MiloPro-ExligIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A5BAFFA99FF452F87117B4C /* MiloPro-ExligIta.otf */; };
+		8CD64CA6FBE8432A844D43E9 /* MiloPro-Text.otf in Resources */ = {isa = PBXBuildFile; fileRef = 048F1C17566742E5B076AE42 /* MiloPro-Text.otf */; };
+		4F609B6622B243F4B0516120 /* MiloPro-TextIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 317F93ACE9AE444EBBA6FB8E /* MiloPro-TextIta.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +294,12 @@
 		FF54CFCEAF99481081F41085 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B222F53290424451ADB92E39 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		45F4C975660F471F8C66A635 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CEB29722AA924C9190421C7A /* MiloPro-Bold.otf */ = {isa = PBXFileReference; name = "MiloPro-Bold.otf"; path = "../assets/fonts/MiloPro-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		85F623F849644106BE08C3D6 /* MiloPro-BoldIta.otf */ = {isa = PBXFileReference; name = "MiloPro-BoldIta.otf"; path = "../assets/fonts/MiloPro-BoldIta.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6B77AE02C70A46D1937FFF69 /* MiloPro-Exlig.otf */ = {isa = PBXFileReference; name = "MiloPro-Exlig.otf"; path = "../assets/fonts/MiloPro-Exlig.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3A5BAFFA99FF452F87117B4C /* MiloPro-ExligIta.otf */ = {isa = PBXFileReference; name = "MiloPro-ExligIta.otf"; path = "../assets/fonts/MiloPro-ExligIta.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		048F1C17566742E5B076AE42 /* MiloPro-Text.otf */ = {isa = PBXFileReference; name = "MiloPro-Text.otf"; path = "../assets/fonts/MiloPro-Text.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		317F93ACE9AE444EBBA6FB8E /* MiloPro-TextIta.otf */ = {isa = PBXFileReference; name = "MiloPro-TextIta.otf"; path = "../assets/fonts/MiloPro-TextIta.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -546,6 +558,12 @@
 				FF54CFCEAF99481081F41085 /* Octicons.ttf */,
 				B222F53290424451ADB92E39 /* SimpleLineIcons.ttf */,
 				45F4C975660F471F8C66A635 /* Zocial.ttf */,
+				CEB29722AA924C9190421C7A /* MiloPro-Bold.otf */,
+				85F623F849644106BE08C3D6 /* MiloPro-BoldIta.otf */,
+				6B77AE02C70A46D1937FFF69 /* MiloPro-Exlig.otf */,
+				3A5BAFFA99FF452F87117B4C /* MiloPro-ExligIta.otf */,
+				048F1C17566742E5B076AE42 /* MiloPro-Text.otf */,
+				317F93ACE9AE444EBBA6FB8E /* MiloPro-TextIta.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -931,6 +949,12 @@
 				9659BE997DDE49C7B53B828D /* Octicons.ttf in Resources */,
 				8CDFCF8A9D78473AB3760EEC /* SimpleLineIcons.ttf in Resources */,
 				A51A0944EBCD4842899C415E /* Zocial.ttf in Resources */,
+				EB6C2658FFF542338C86BB79 /* MiloPro-Bold.otf in Resources */,
+				3F613F37117C4AB8A39D205B /* MiloPro-BoldIta.otf in Resources */,
+				23E455A829544AA282BE34CB /* MiloPro-Exlig.otf in Resources */,
+				4EAF793980ED42E893322D36 /* MiloPro-ExligIta.otf in Resources */,
+				8CD64CA6FBE8432A844D43E9 /* MiloPro-Text.otf in Resources */,
+				4F609B6622B243F4B0516120 /* MiloPro-TextIta.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

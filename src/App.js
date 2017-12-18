@@ -6,6 +6,7 @@ import {
 // $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { initColors } from 'open-city-modules';
+import { setCustomText } from 'react-native-global-props';
 
 import tabs from 'src/config/tabs';
 import MyOnboarding from 'src/config/onboarding';
@@ -17,6 +18,7 @@ import { loadProfile, saveProfile } from 'src/profile';
 // eslint-disable-next-line no-unused-vars
 import i18n from 'src/config/translations';
 
+setCustomText({ style: { fontFamily: 'MiloPro' } });
 initColors(colors);
 
 const Tabs = TabNavigator(tabs, {
@@ -24,9 +26,9 @@ const Tabs = TabNavigator(tabs, {
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   tabBarOptions: {
-    activeTintColor: colors.max,
+    activeTintColor: colors.med,
     activeBackgroundColor: colors.min,
-    inactiveTintColor: colors.med,
+    inactiveTintColor: colors.max,
     inactiveBackgroundColor: colors.min,
   },
 });
