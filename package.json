@@ -8,6 +8,8 @@
 		"flow": "flow"
 	},
 	"dependencies": {
+		"buffer": "^5.0.8",
+		"events": "^1.1.1",
 		"i18next": "^10.2.1",
 		"lodash": "^4.17.4",
 		"open-city-modules": "git+ssh://git@github.com/haltu/open-city-modules.git",
@@ -17,7 +19,10 @@
 		"react-native-maps": "^0.19.0",
 		"react-native-vector-icons": "^4.4.2",
 		"react-navigation": "^1.0.0-beta.21",
-		"recompose": "^0.26.0"
+		"recompose": "^0.26.0",
+		"stream": "0.0.2",
+		"timers": "^0.1.1",
+		"xml2js": "^0.4.19"
 	},
 	"devDependencies": {
 		"babel-eslint": "^8.0.2",
