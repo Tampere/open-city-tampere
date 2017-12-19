@@ -7,7 +7,7 @@ const MyHeader = (props) => {
   const { defaultRightAction } = props;
   return (
     <Header
-      title="Open City"
+      title="Tampere App"
       rightAction={{
         icon: img,
         style: { tintColor: colors.max },
