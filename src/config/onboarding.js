@@ -126,7 +126,7 @@ const ListChoiceView = withProps({
   buttonProps: listButtonProps,
   containerStyle,
   questionStyle,
-  contentStyle: { marginTop: 250 },
+  marginTopMultiplier: 0.7,
   bottomBarProps,
 })(ChoiceView);
 const LanguageView = withProps({
@@ -181,7 +181,7 @@ const MySplash = withProps({
   welcomeText: 'Tervetuloa käyttämään kaupunkisovellusta',
   beginText: 'ALOITA',
   textColor: 'white',
-  marginTop: 400,
+  marginTopMultiplier: 1.15,
 })(SplashScreen);
 const onboardingProps = {
   splash: MySplash,
