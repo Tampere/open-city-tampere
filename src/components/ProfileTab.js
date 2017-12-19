@@ -40,22 +40,26 @@ const ProfileTab = (props: Props) => {
   const { t, i18n } = props;
   const translatedUserType = t(`userTypeStep:options.${profile.userType}`);
   const translatedInterests = profile.interests.map(value => t(`interestStep:options.${value}`));
+  const Header = props.screenProps.header;
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{`${t('userType')}: ${translatedUserType}`}</Text>
-      <ChoiceList title={`${t('interests')}:`} choices={translatedInterests} />
-      <View style={styles.button}>
-        <Button onPress={restartOnboarding} title={t('restartOnboarding')} />
-      </View>
-      <View style={styles.changeLanguage}>
-        <Text style={styles.text}>{t('changeLanguage')}</Text>
-        <Picker
-          selectedValue={i18n.language}
-          onValueChange={value => i18n.changeLanguage(value)}
-        >
-          <Picker.Item label="English" value="en" />
-          <Picker.Item label="Suomi" value="fi" />
-        </Picker>
+    <View style={{ flex: 1 }}>
+      <Header />
+      <View style={styles.container}>
+        <Text style={styles.text}>{`${t('userType')}: ${translatedUserType}`}</Text>
+        <ChoiceList title={`${t('interests')}:`} choices={translatedInterests} />
+        <View style={styles.button}>
+          <Button onPress={restartOnboarding} title={t('restartOnboarding')} />
+        </View>
+        <View style={styles.changeLanguage}>
+          <Text style={styles.text}>{t('changeLanguage')}</Text>
+          <Picker
+            selectedValue={i18n.language}
+            onValueChange={value => i18n.changeLanguage(value)}
+          >
+            <Picker.Item label="English" value="en" />
+            <Picker.Item label="Suomi" value="fi" />
+          </Picker>
+        </View>
       </View>
     </View>
   );

@@ -5,11 +5,12 @@ import {
 } from 'react-native';
 // $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
+import { withProps } from 'recompose';
 import { initColors } from 'open-city-modules';
 
 import tabs from 'src/config/tabs';
 import MyOnboarding from 'src/config/onboarding';
-import Header from 'src/components/Header';
+import Header from 'src/config/header';
 import CityChangeModal from 'src/components/CityChangeModal';
 import colors from 'src/config/colors';
 import { loadProfile, saveProfile } from 'src/profile';
@@ -48,7 +49,10 @@ class App extends React.Component<Props, State> {
       loadingProfile: true,
       modalVisible: false,
     };
+    // $FlowFixMe
+    this.header = withProps({ defaultRightAction: this.showModal })(Header);
   }
+
   componentDidMount() {
     loadProfile().then((value) => {
       if (value !== null) {
@@ -90,10 +94,11 @@ class App extends React.Component<Props, State> {
       locale: 'fi',
       profile,
       restartOnboarding: this.restartOnboarding,
+      // $FlowFixMe
+      header: this.header,
     };
     return (
       <View style={{ flex: 1 }}>
-        <Header onPress={this.showModal} />
         <Tabs screenProps={screenProps} />
         <CityChangeModal visible={this.state.modalVisible} onClose={this.hideModal} />
       </View>
