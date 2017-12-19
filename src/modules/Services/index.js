@@ -1,14 +1,9 @@
 /* @flow */
 import * as React from 'react';
-import {
-  WebView,
-  Text,
-  View,
-  TouchableHighlight,
-} from 'react-native';
+// $FlowFixMe
 import { StackNavigator } from 'react-navigation';
+
 import colors from 'src/config/colors';
-import styles from './styles';
 import Menu from './menu';
 import ServicesList from './serviceslist';
 import ServiceView from './serviceview';
@@ -23,7 +18,7 @@ const ServicesNavigator = StackNavigator({
   },
   ServiceView: {
     screen: ServiceView,
-  }
+  },
 }, {
   initialRouteName: 'ServiceMenu',
   headerMode: 'none',
