@@ -32,7 +32,7 @@ const ServicesNavigator = StackNavigator({
  */
 class Services extends React.Component {
   render() {
-    return <ServicesNavigator />
+    return <ServicesNavigator screenProps={this.props.screenProps} />
   }
 }
 

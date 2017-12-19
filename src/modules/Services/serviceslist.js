@@ -7,10 +7,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { parseString } from 'xml2js';
+import { withBackButton } from 'src/config/util';
+
 import styles from './styles';
 
 type Props = {
   navigation: Object,
+  screenProps: any,
 }
 
 type State = {
@@ -60,12 +63,13 @@ class ServicesList extends React.Component<Props, State> {
 
   render() {
     const { loading, items } = this.state;
+    let content;
     if (loading) {
-      return (
+      content = (
         <View style={styles.centeredView}><Text>Ladataan tietoja..</Text></View>
-      )
+      );
     } else {
-      return (
+      content = (
         <ScrollView>
           {items.map((item, i) => (
             <TouchableOpacity key={i} style={styles.listItem} onPress={() => this.props.navigation.navigate('ServiceView', {item})}>
@@ -74,8 +78,15 @@ class ServicesList extends React.Component<Props, State> {
             </TouchableOpacity>
           ))}
         </ScrollView>
-      )
+      );
     }
+    const Header = withBackButton(this.props.navigation)(this.props.screenProps.header);
+    return (
+      <View style={{ flex: 1 }}>
+        <Header />
+        { content }
+      </View>
+    );
   }
 }
 
