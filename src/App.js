@@ -18,7 +18,7 @@ import { loadProfile, saveProfile } from 'src/profile';
 // eslint-disable-next-line no-unused-vars
 import i18n from 'src/config/translations';
 
-setCustomText({ style: { fontFamily: 'MiloPro' } });
+setCustomText({ style: { fontFamily: 'MiloPro' }, backgroundColor: 'transparent' });
 initColors(colors);
 
 const Tabs = TabNavigator(tabs, {
