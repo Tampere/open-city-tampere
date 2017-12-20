@@ -50,7 +50,7 @@ class App extends React.Component<Props, State> {
       modalVisible: false,
     };
     // $FlowFixMe
-    this.header = withProps({ defaultRightAction: this.showModal })(Header);
+    this.Header = withProps({ defaultRightAction: this.showModal })(Header);
   }
 
   componentDidMount() {
@@ -95,7 +95,7 @@ class App extends React.Component<Props, State> {
       profile,
       restartOnboarding: this.restartOnboarding,
       // $FlowFixMe
-      header: this.header,
+      Header: this.Header,
     };
     return (
       <View style={{ flex: 1 }}>

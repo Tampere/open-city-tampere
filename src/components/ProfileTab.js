@@ -1,5 +1,5 @@
 /* @flow */
-import React from 'react';
+import * as React from 'react';
 import {
   View,
   Text,
@@ -29,6 +29,7 @@ type Props = {
   screenProps: {
     profile: Profile,
     restartOnboarding: () => void,
+    Header: React.Component<any>,
   },
   t: string => string,
   i18n: any,
@@ -40,7 +41,7 @@ const ProfileTab = (props: Props) => {
   const { t, i18n } = props;
   const translatedUserType = t(`userTypeStep:options.${profile.userType}`);
   const translatedInterests = profile.interests.map(value => t(`interestStep:options.${value}`));
-  const Header = props.screenProps.header;
+  const { Header } = props.screenProps;
   return (
     <View style={{ flex: 1 }}>
       <Header />
