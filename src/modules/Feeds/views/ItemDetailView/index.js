@@ -3,6 +3,8 @@ import React from 'react';
 import {
   View,
   Text,
+  Linking,
+  TouchableOpacity,
 } from 'react-native';
 import { withBackButton } from 'src/config/util';
 
@@ -23,7 +25,9 @@ const ServiceView = (props: Props) => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.date}>Julkaistu {item.date}</Text>
         <Text style={styles.description}>{item.description}</Text>
-        <Text style={styles.link}>Lue koko uutinen</Text>
+        <TouchableOpacity onPress={() => Linking.openURL(item.link)}>
+          <Text style={styles.link}>Lue koko uutinen</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
