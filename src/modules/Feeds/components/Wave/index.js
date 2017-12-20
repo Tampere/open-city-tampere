@@ -7,7 +7,7 @@ import colors from 'src/config/colors';
 const ASPECT_RATIO = 1080 / 50;
 const screenWidth = Dimensions.get('window').width;
 
-const Wave = (props: { topColor?: string, bottomColor?: string, style: any }) => (
+const Wave = (props: { topColor?: string, bottomColor?: string, style?: any }) => (
   <Image
     source={wave2}
     style={[{
@@ -22,6 +22,7 @@ const Wave = (props: { topColor?: string, bottomColor?: string, style: any }) =>
 Wave.defaultProps = {
   topColor: colors.max,
   bottomColor: 'transparent',
+  style: {},
 };
 
 export default Wave;

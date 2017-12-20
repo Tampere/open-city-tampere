@@ -5,18 +5,29 @@ const styles = EStyleSheet.create({
   container: {
     flex: 1,
   },
-  content: {
-    flex: 1,
-    padding: 10,
+  topContent: {
+    backgroundColor: colors.max,
   },
   title: {
-    color: colors.med,
+    color: colors.min,
     fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingHorizontal: 10,
+    marginBottom: 10,
   },
   date: {
-    color: colors.max,
+    color: colors.med,
     fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingHorizontal: 10,
     marginBottom: 20,
+  },
+  bottomContent: {
+    flex: 1,
+    padding: 10,
+    marginTop: 10,
   },
   description: {
     color: colors.max,
