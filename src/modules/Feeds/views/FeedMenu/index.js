@@ -38,7 +38,7 @@ const FeedMenu = (props: Props) => {
         <MenuItem
           label="Ilmoitukset"
           icon={announcements}
-          onPress={() => goToItemListView('notifications')}
+          onPress={() => goToItemListView('announcements')}
         />
         <MenuItem
           label="Artikkelit"
