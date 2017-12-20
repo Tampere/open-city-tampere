@@ -4,14 +4,14 @@ import ProfileTab from 'src/components/ProfileTab';
 import feedbackConfig from 'src/config/feedbackConfig.json';
 import { translate } from 'react-i18next';
 import { withProps } from 'recompose';
-import Services from 'src/modules/Services';
+import Feeds from 'src/modules/Feeds';
 
 configureFeedback(feedbackConfig);
 
 const tabs = {
 
   Home: {
-    screen: Services,
+    screen: Feeds,
   },
   Feedback: {
     screen: FeedbackModule,

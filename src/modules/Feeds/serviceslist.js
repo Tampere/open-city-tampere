@@ -21,7 +21,7 @@ type State = {
   loading: Boolean,
 }
 
-class ServicesList extends React.Component<Props, State> {
+class FeedsList extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
@@ -91,4 +91,4 @@ class ServicesList extends React.Component<Props, State> {
 }
 
 
-export default ServicesList;
+export default FeedsList;

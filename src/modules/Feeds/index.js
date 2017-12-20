@@ -5,16 +5,16 @@ import { StackNavigator } from 'react-navigation';
 
 import colors from 'src/config/colors';
 import Menu from './menu';
-import ServicesList from './serviceslist';
+import FeedsList from './serviceslist';
 import ServiceView from './serviceview';
 
-// Navigator for Services module
-const ServicesNavigator = StackNavigator({
+// Navigator for Feeds module
+const FeedsNavigator = StackNavigator({
   ServiceMenu: {
     screen: Menu,
   },
-  ServicesList: {
-    screen: ServicesList,
+  FeedsList: {
+    screen: FeedsList,
   },
   ServiceView: {
     screen: ServiceView,
@@ -30,10 +30,10 @@ const ServicesNavigator = StackNavigator({
 /*
  Recent news and events in Tampere
  */
-class Services extends React.Component {
+class Feeds extends React.Component {
   render() {
-    return <ServicesNavigator screenProps={this.props.screenProps} />
+    return <FeedsNavigator screenProps={this.props.screenProps} />
   }
 }
 
-export default Services;
+export default Feeds;
