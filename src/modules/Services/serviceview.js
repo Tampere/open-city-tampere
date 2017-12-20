@@ -15,7 +15,7 @@ type Props = {
 
 const ServiceView = (props: Props) => {
   const item = props.navigation.state.params.item;
-  const Header = withBackButton(props.navigation)(props.screenProps.header);
+  const Header = withBackButton(props.navigation)(props.screenProps.Header);
   return (
     <View>
       <Header />

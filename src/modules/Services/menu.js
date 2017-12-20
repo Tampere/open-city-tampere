@@ -13,7 +13,7 @@ type Props = {
 }
 
 const Menu = (props: Props) => {
-  const Header = props.screenProps.header;
+  const { Header } = props.screenProps;
   return (
     <View style={styles.container}>
       <Header />

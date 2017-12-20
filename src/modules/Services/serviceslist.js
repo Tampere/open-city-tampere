@@ -80,7 +80,7 @@ class ServicesList extends React.Component<Props, State> {
         </ScrollView>
       );
     }
-    const Header = withBackButton(this.props.navigation)(this.props.screenProps.header);
+    const Header = withBackButton(this.props.navigation)(this.props.screenProps.Header);
     return (
       <View style={{ flex: 1 }}>
         <Header />
