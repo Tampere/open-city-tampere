@@ -61,6 +61,12 @@ i18n
           restartOnboarding: 'Edit your choices',
           changeLanguage: 'Change language',
         },
+        feeds: {
+          news: 'News',
+          events: 'Events',
+          announcements: 'Announcements',
+          articles: 'Articles',
+        },
       },
       fi: {
         common: {
@@ -107,6 +113,12 @@ i18n
           interests: 'Kiinnostuksen kohteet',
           restartOnboarding: 'Muuta valintojasi',
           changeLanguage: 'Vaihda kieltä',
+        },
+        feeds: {
+          news: 'Uutiset',
+          events: 'Tapahtumat',
+          announcements: 'Ilmoitukset',
+          articles: 'Artikkelit',
         },
       },
     },

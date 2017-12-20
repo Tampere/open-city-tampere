@@ -9,6 +9,7 @@ import {
 import { parseString } from 'xml2js';
 import he from 'he';
 import { withBackButton } from 'src/config/util';
+import { translate } from 'react-i18next';
 
 import Wave from 'src/modules/Feeds/components/Wave';
 import colors from 'src/config/colors';
@@ -19,6 +20,7 @@ import styles from './styles';
 type Props = {
   navigation: Object,
   screenProps: any,
+  t: string => string,
 };
 
 type Item = {
@@ -43,13 +45,8 @@ class ItemListView extends React.Component<Props, State> {
   }
 
   componentWillMount() {
-    let url = '';
-    const { service } = this.props.navigation.state.params;
-    if (service === 'announcements') url = 'https://www.tampere.fi/tampereen-kaupunki/ajankohtaista/ilmoitukset/rss.xml';
-    else if (service === 'events') url = 'https://www.tampere.fi/tampereen-kaupunki/ajankohtaista/tapahtumat/rss2.xml.stx';
-    else if (service === 'articles') url = 'https://www.tampere.fi/tampereen-kaupunki/ajankohtaista/artikkelit/rss.xml.stx';
-    else url = 'https://www.tampere.fi/tampereen-kaupunki/ajankohtaista/tiedotteet/rss.xml.stx';
-    fetch(url)
+    const { feed } = this.props.navigation.state.params;
+    fetch(feed.url)
       .then(response => response.text())
       .then((text) => {
         parseString(text, (err, result) => {
@@ -73,6 +70,7 @@ class ItemListView extends React.Component<Props, State> {
 
   render() {
     const { loading, items } = this.state;
+    const { t } = this.props;
     let content;
     if (loading) {
       content = (
@@ -97,7 +95,7 @@ class ItemListView extends React.Component<Props, State> {
         <Header
           bgColor={colors.max}
           fgColor={colors.min}
-          title={this.props.navigation.state.params.service}
+          title={t(this.props.navigation.state.params.feed.name).toUpperCase()}
         />
         <View style={{ flex: 1 }}>
           <Wave style={{ position: 'absolute', top: 0, zIndex: 2 }} />
@@ -109,4 +107,4 @@ class ItemListView extends React.Component<Props, State> {
 }
 
 
-export default ItemListView;
+export default translate('feeds')(ItemListView);
