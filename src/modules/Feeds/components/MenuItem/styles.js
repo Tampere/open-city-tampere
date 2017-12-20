@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
   label: {
     flex: 1,
     marginLeft: 20,
-    fontSize: 35,
+    fontSize: 30,
+    fontWeight: 'bold',
     color: colors.min,
   },
 });
