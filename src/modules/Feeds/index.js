@@ -4,23 +4,23 @@ import * as React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import colors from 'src/config/colors';
-import Menu from './menu';
-import FeedsList from './serviceslist';
-import ServiceView from './serviceview';
+import FeedMenu from './views/FeedMenu';
+import ItemListView from './views/ItemListView';
+import ItemDetailView from './views/ItemDetailView';
 
 // Navigator for Feeds module
 const FeedsNavigator = StackNavigator({
-  ServiceMenu: {
-    screen: Menu,
+  FeedMenu: {
+    screen: FeedMenu,
   },
-  FeedsList: {
-    screen: FeedsList,
+  ItemListView: {
+    screen: ItemListView,
   },
-  ServiceView: {
-    screen: ServiceView,
+  ItemDetailView: {
+    screen: ItemDetailView,
   },
 }, {
-  initialRouteName: 'ServiceMenu',
+  initialRouteName: 'FeedMenu',
   headerMode: 'none',
   cardStyle: {
     backgroundColor: colors.min,

@@ -72,7 +72,7 @@ class FeedsList extends React.Component<Props, State> {
       content = (
         <ScrollView>
           {items.map((item, i) => (
-            <TouchableOpacity key={i} style={styles.listItem} onPress={() => this.props.navigation.navigate('ServiceView', {item})}>
+            <TouchableOpacity key={i} style={styles.listItem} onPress={() => this.props.navigation.navigate('ItemDetailView', {item})}>
               <Text style={styles.listItemTitle}>{item.title}</Text>
               <Text>Julkaistu {item.date}</Text>
             </TouchableOpacity>

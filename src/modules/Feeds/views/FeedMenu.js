@@ -20,24 +20,24 @@ const Menu = (props: Props) => {
       <View style={styles.servicesContainer}>
         <TouchableOpacity
           style={styles.centeredView}
-          onPress={() => {console.log(props);props.navigation.navigate('FeedsList', {service: 'news'});}}>
+          onPress={() => {console.log(props);props.navigation.navigate('ItemListView', {service: 'news'});}}>
           <Text>Uutiset</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.centeredView}
-          onPress={() => props.navigation.navigate('FeedsList', {service: 'events'})}>
+          onPress={() => props.navigation.navigate('ItemListView', {service: 'events'})}>
           <Text>Tapahtumat</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.servicesContainer}>
         <TouchableOpacity
           style={styles.centeredView}
-          onPress={() => props.navigation.navigate('FeedsList', {service: 'notifications'})}>
+          onPress={() => props.navigation.navigate('ItemListView', {service: 'notifications'})}>
           <Text>Ilmoitukset</Text>
         </TouchableOpacity>
         <TouchableOpacity
         style={styles.centeredView}
-        onPress={() => props.navigation.navigate('FeedsList', {service: 'articles'})}>
+        onPress={() => props.navigation.navigate('ItemListView', {service: 'articles'})}>
           <Text>Artikkelit</Text>
         </TouchableOpacity>
       </View>
