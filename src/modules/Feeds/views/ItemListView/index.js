@@ -79,8 +79,8 @@ class ItemListView extends React.Component<Props, State> {
           {items.map((item, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <TouchableOpacity key={i} style={styles.listItem} onPress={() => this.props.navigation.navigate('ItemDetailView', { item })}>
-              <Text style={styles.listItemTitle}>{item.title}</Text>
-              <Text>Julkaistu {item.date}</Text>
+              <Text style={styles.listItemTitle}>{item.title.toUpperCase()}</Text>
+              <Text style={styles.listItemDate}>Julkaistu {item.date}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>

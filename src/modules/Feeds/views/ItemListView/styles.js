@@ -1,13 +1,9 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import colors from 'src/config/colors';
 
 const styles = EStyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-  },
-  servicesContainer: {
-    flex: 1,
-    flexDirection: 'row',
   },
   centeredView: {
     flex: 1,
@@ -18,6 +14,11 @@ const styles = EStyleSheet.create({
     padding: 10,
   },
   listItemTitle: {
+    color: colors.med,
+    fontSize: 18,
+  },
+  listItemDate: {
+    color: colors.max,
   },
 });
 

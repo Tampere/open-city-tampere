@@ -14,15 +14,17 @@ type Props = {
 }
 
 const ServiceView = (props: Props) => {
-  const item = props.navigation.state.params.item;
+  const { item } = props.navigation.state.params;
   const Header = withBackButton(props.navigation)(props.screenProps.Header);
   return (
-    <View>
+    <View style={styles.container}>
       <Header />
-      <Text>{item.title}</Text>
-      <Text>{item.date}</Text>
-      <Text>{item.description}</Text>
-      <Text>{item.link}</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.date}>Julkaistu {item.date}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+        <Text style={styles.link}>Lue koko uutinen</Text>
+      </View>
     </View>
   );
 };
