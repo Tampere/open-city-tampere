@@ -6,7 +6,7 @@ export type ColorSet = {
 }
 
 const colors: ColorSet = {
-  max: '#888888',
+  max: '#36363F',
   med: '#D45049',
   min: '#FFFFFF',
   yellow: '#FCB823',
