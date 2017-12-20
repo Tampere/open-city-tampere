@@ -7,6 +7,7 @@ import { translate } from 'react-i18next';
 
 import MenuItem from 'src/modules/Feeds/components/MenuItem';
 import { feeds } from 'src/modules/Feeds/config';
+import colors from 'src/config/colors';
 import styles from './styles';
 
 type Props = {
@@ -23,7 +24,11 @@ const FeedMenu = (props: Props) => {
   const { t } = props;
   return (
     <View style={styles.container}>
-      <Header />
+      <Header
+        title="AJANKOHTAISTA"
+        bgColor={colors.med}
+        fgColor={colors.min}
+      />
       <View style={styles.feedContainer}>
         { feeds.map(feed => (
           <MenuItem
