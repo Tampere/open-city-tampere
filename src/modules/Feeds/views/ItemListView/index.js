@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { parseString } from 'xml2js';
+import he from 'he';
 import { withBackButton } from 'src/config/util';
 
 import styles from './styles';
@@ -53,7 +54,7 @@ class ItemListView extends React.Component<Props, State> {
             const date = `${dateObj.getDate()}.${dateObj.getMonth() + 1}.${dateObj.getFullYear()}`;
             return {
               title: item.title[0],
-              description: item.description[0].replace('<p>', '').replace('</p>', ''),
+              description: he.decode(item.description[0].replace('<p>', '').replace('</p>', '')),
               date,
               link: item.link[0],
             };
