@@ -4,13 +4,15 @@ import img from 'TampereApp/img/city.png';
 import colors from 'src/config/colors';
 
 const MyHeader = (props) => {
-  const { defaultRightAction } = props;
+  const { defaultRightAction, bgColor = colors.min, fgColor = colors.max } = props;
   return (
     <Header
       title="Tampere App"
+      style={{ backgroundColor: bgColor }}
+      titleStyle={{ color: fgColor }}
       rightAction={{
         icon: img,
-        style: { tintColor: colors.max },
+        style: { tintColor: fgColor },
         action: defaultRightAction,
       }}
       {...props}

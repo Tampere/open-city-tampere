@@ -10,7 +10,11 @@ import { parseString } from 'xml2js';
 import he from 'he';
 import { withBackButton } from 'src/config/util';
 
+import Wave from 'src/modules/Feeds/components/Wave';
+import colors from 'src/config/colors';
+
 import styles from './styles';
+
 
 type Props = {
   navigation: Object,
@@ -76,7 +80,7 @@ class ItemListView extends React.Component<Props, State> {
       );
     } else if (Array.isArray(items)) {
       content = (
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.listContainer}>
           {items.map((item, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <TouchableOpacity key={i} style={styles.listItem} onPress={() => this.props.navigation.navigate('ItemDetailView', { item })}>
@@ -87,11 +91,18 @@ class ItemListView extends React.Component<Props, State> {
         </ScrollView>
       );
     }
-    const Header = withBackButton(this.props.navigation)(this.props.screenProps.Header);
+    const Header = withBackButton(this.props.navigation, colors.min)(this.props.screenProps.Header);
     return (
       <View style={{ flex: 1 }}>
-        <Header />
-        { content }
+        <Header
+          bgColor={colors.max}
+          fgColor={colors.min}
+          title={this.props.navigation.state.params.service}
+        />
+        <View style={{ flex: 1 }}>
+          <Wave style={{ position: 'absolute', top: 0, zIndex: 2 }} />
+          { content }
+        </View>
       </View>
     );
   }

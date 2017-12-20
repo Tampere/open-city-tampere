@@ -10,8 +10,12 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  listContainer: {
+    paddingTop: 30,
+  },
   listItem: {
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
   listItemTitle: {
     color: colors.med,
@@ -19,6 +23,12 @@ const styles = EStyleSheet.create({
   },
   listItemDate: {
     color: colors.max,
+  },
+  header: {
+    backgroundColor: colors.max,
+  },
+  headerTitle: {
+    color: colors.min,
   },
 });
 
