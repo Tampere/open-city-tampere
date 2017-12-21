@@ -29,6 +29,7 @@ const Tabs = TabNavigator(tabs, {
     activeBackgroundColor: colors.min,
     inactiveTintColor: colors.max,
     inactiveBackgroundColor: colors.min,
+    labelStyle: { fontSize: 12 },
   },
 });
 
