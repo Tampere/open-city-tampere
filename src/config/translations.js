@@ -19,6 +19,8 @@ i18n
         tabs: {
           home: 'Home',
           profile: 'Profile',
+          feedback: 'Feedback',
+          feeds: 'Feeds',
         },
         languageStep: {
           question: 'Choose a language',
@@ -93,6 +95,8 @@ i18n
         tabs: {
           home: 'Koti',
           profile: 'Profiili',
+          feedback: 'Palaute',
+          feeds: 'Ajankohtaista',
         },
         userTypeStep: {
           title: 'Tampere app',

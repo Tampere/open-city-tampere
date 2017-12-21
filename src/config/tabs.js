@@ -17,16 +17,19 @@ const iconProvider = (name: string) => ({ tintColor }: { tintColor: string }) =>
 );
 
 const tabs = {
-
   Home: {
     screen: Feeds,
     navigationOptions: () => ({
-      title: i18n.t('tabs:home'),
-      tabBarIcon: iconProvider('home'),
+      title: i18n.t('tabs:feeds'),
+      tabBarIcon: iconProvider('history'),
     }),
   },
   Feedback: {
     screen: FeedbackModule,
+    navigationOptions: () => ({
+      title: i18n.t('tabs:feedback'),
+      tabBarIcon: iconProvider('map-marker-circle'),
+    }),
   },
   Profile: {
     screen: translate('profileTab')(ProfileTab),
