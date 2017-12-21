@@ -13,21 +13,14 @@ import { translate } from 'react-i18next';
 
 import Wave from 'src/modules/Feeds/components/Wave';
 import colors from 'src/config/colors';
+import { type Item } from 'src/modules/Feeds/types';
 
 import styles from './styles';
-
 
 type Props = {
   navigation: Object,
   screenProps: any,
   t: string => string,
-};
-
-type Item = {
-  title: string,
-  description: string,
-  date: string,
-  link: string,
 };
 
 type State = {
@@ -70,32 +63,37 @@ class ItemListView extends React.Component<Props, State> {
 
   render() {
     const { loading, items } = this.state;
-    const { t } = this.props;
+    const { t, navigation } = this.props;
+    const { feed } = navigation.state.params;
     let content;
     if (loading) {
       content = (
-        <View style={styles.centeredView}><Text>Ladataan tietoja..</Text></View>
+        <View style={styles.centeredView}><Text>{t('common:loading')}</Text></View>
       );
     } else if (Array.isArray(items)) {
       content = (
         <ScrollView contentContainerStyle={styles.listContainer}>
           {items.map((item, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <TouchableOpacity key={i} style={styles.listItem} onPress={() => this.props.navigation.navigate('ItemDetailView', { item })}>
+            <TouchableOpacity
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
+              style={styles.listItem}
+              onPress={() => navigation.navigate('ItemDetailView', { item, type: feed.name })}
+            >
               <Text style={styles.listItemTitle}>{item.title.toUpperCase()}</Text>
-              <Text style={styles.listItemDate}>Julkaistu {item.date}</Text>
+              <Text style={styles.listItemDate}>{t('published')} {item.date}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
       );
     }
-    const Header = withBackButton(this.props.navigation, colors.min)(this.props.screenProps.Header);
+    const Header = withBackButton(navigation, colors.min)(this.props.screenProps.Header);
     return (
       <View style={{ flex: 1 }}>
         <Header
           bgColor={colors.max}
           fgColor={colors.min}
-          title={t(this.props.navigation.state.params.feed.name).toUpperCase()}
+          title={t(feed.name).toUpperCase()}
         />
         <View style={{ flex: 1 }}>
           <Wave style={{ position: 'absolute', top: 0, zIndex: 2 }} />
@@ -107,4 +105,4 @@ class ItemListView extends React.Component<Props, State> {
 }
 
 
-export default translate('feeds')(ItemListView);
+export default translate(['feeds', 'common'])(ItemListView);

@@ -25,7 +25,7 @@ const FeedMenu = (props: Props) => {
   return (
     <View style={styles.container}>
       <Header
-        title="AJANKOHTAISTA"
+        title={t('feeds').toUpperCase()}
         bgColor={colors.med}
         fgColor={colors.min}
       />

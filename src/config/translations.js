@@ -14,6 +14,7 @@ i18n
           previous: 'Previous',
           finish: 'Finish',
           'city-change-title': 'Open another city\'s app',
+          loading: 'Loading...',
         },
         languageStep: {
           question: 'Choose a language',
@@ -62,10 +63,18 @@ i18n
           changeLanguage: 'Change language',
         },
         feeds: {
+          feeds: 'Feeds',
           news: 'News',
           events: 'Events',
           announcements: 'Announcements',
           articles: 'Articles',
+          published: 'Published',
+          link: {
+            news: 'Read the whole story',
+            events: 'View event details',
+            announcements: 'Read the whole announcement',
+            articles: 'Read the whole article',
+          },
         },
       },
       fi: {
@@ -75,6 +84,7 @@ i18n
           previous: 'Edellinen',
           finish: 'Valmis',
           'city-change-title': 'Avaa toisen kaupungin sovellus',
+          loading: 'Ladataan...',
         },
         userTypeStep: {
           title: 'Tampere app',
@@ -115,10 +125,18 @@ i18n
           changeLanguage: 'Vaihda kieltä',
         },
         feeds: {
+          feeds: 'Ajankohtaista',
           news: 'Uutiset',
           events: 'Tapahtumat',
           announcements: 'Ilmoitukset',
           articles: 'Artikkelit',
+          published: 'Julkaistu',
+          link: {
+            news: 'Lue koko uutinen',
+            events: 'Katso tapahtuman tiedot',
+            announcements: 'Lue koko ilmoitus',
+            articles: 'Lue koko artikkeli',
+          },
         },
       },
     },
