@@ -54,6 +54,10 @@
 		4EAF793980ED42E893322D36 /* MiloPro-ExligIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A5BAFFA99FF452F87117B4C /* MiloPro-ExligIta.otf */; };
 		8CD64CA6FBE8432A844D43E9 /* MiloPro-Text.otf in Resources */ = {isa = PBXBuildFile; fileRef = 048F1C17566742E5B076AE42 /* MiloPro-Text.otf */; };
 		4F609B6622B243F4B0516120 /* MiloPro-TextIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 317F93ACE9AE444EBBA6FB8E /* MiloPro-TextIta.otf */; };
+		627AD00159594199AA26645E /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA511D879F54CD181EBAAF0 /* libRCTActionSheet.a */; };
+		AB68193C2B3A461ABE45D4BA /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C493158F53E541A78ED1CA48 /* libRNImagePicker.a */; };
+		E088569232204D4586ADAE12 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B905C490ACE43C4B27298D9 /* libRCTImageResizer.a */; };
+		DAF8D9DB0EAD4B79AABCA917 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5758F5AAB3E543E585074F19 /* libAirMaps.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +304,14 @@
 		3A5BAFFA99FF452F87117B4C /* MiloPro-ExligIta.otf */ = {isa = PBXFileReference; name = "MiloPro-ExligIta.otf"; path = "../assets/fonts/MiloPro-ExligIta.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		048F1C17566742E5B076AE42 /* MiloPro-Text.otf */ = {isa = PBXFileReference; name = "MiloPro-Text.otf"; path = "../assets/fonts/MiloPro-Text.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		317F93ACE9AE444EBBA6FB8E /* MiloPro-TextIta.otf */ = {isa = PBXFileReference; name = "MiloPro-TextIta.otf"; path = "../assets/fonts/MiloPro-TextIta.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D38F99CCBA7B45A49B05EB12 /* ReactNativeGlobalProps.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeGlobalProps.xcodeproj"; path = "../node_modules/react-native-global-props/ios/ReactNativeGlobalProps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4BA511D879F54CD181EBAAF0 /* libRCTActionSheet.a */ = {isa = PBXFileReference; name = "libRCTActionSheet.a"; path = "libRCTActionSheet.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		86F5D7DAAA6940C1A13775CE /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		C493158F53E541A78ED1CA48 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		6FC2A5D9A4EB47BF83437F74 /* RCTImageResizer.xcodeproj */ = {isa = PBXFileReference; name = "RCTImageResizer.xcodeproj"; path = "../node_modules/react-native-image-resizer/ios/RCTImageResizer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4B905C490ACE43C4B27298D9 /* libRCTImageResizer.a */ = {isa = PBXFileReference; name = "libRCTImageResizer.a"; path = "libRCTImageResizer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		DE3F1F3B65A84FAA89FA567D /* AirMaps.xcodeproj */ = {isa = PBXFileReference; name = "AirMaps.xcodeproj"; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		5758F5AAB3E543E585074F19 /* libAirMaps.a */ = {isa = PBXFileReference; name = "libAirMaps.a"; path = "libAirMaps.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +341,10 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				19D5F60F615D49A2B84C959F /* libRNVectorIcons.a in Frameworks */,
+				627AD00159594199AA26645E /* libRCTActionSheet.a in Frameworks */,
+				AB68193C2B3A461ABE45D4BA /* libRNImagePicker.a in Frameworks */,
+				E088569232204D4586ADAE12 /* libRCTImageResizer.a in Frameworks */,
+				DAF8D9DB0EAD4B79AABCA917 /* libAirMaps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +514,10 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				D15C6E39B44B4BFC9E7D5EBC /* RNVectorIcons.xcodeproj */,
+				D38F99CCBA7B45A49B05EB12 /* ReactNativeGlobalProps.xcodeproj */,
+				86F5D7DAAA6940C1A13775CE /* RNImagePicker.xcodeproj */,
+				6FC2A5D9A4EB47BF83437F74 /* RCTImageResizer.xcodeproj */,
+				DE3F1F3B65A84FAA89FA567D /* AirMaps.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1089,10 +1109,18 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-global-props/ios/ReactNativeGlobalProps/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 			};
 			name = Debug;
@@ -1114,10 +1142,18 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-global-props/ios/ReactNativeGlobalProps/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 			};
 			name = Release;
@@ -1140,6 +1176,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-global-props/ios/ReactNativeGlobalProps/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 			};
 			name = Debug;
@@ -1161,6 +1201,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-global-props/ios/ReactNativeGlobalProps/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 			};
 			name = Release;
@@ -1191,10 +1235,18 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-global-props/ios/ReactNativeGlobalProps/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 			};
 			name = Debug;
@@ -1225,10 +1277,18 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-global-props/ios/ReactNativeGlobalProps/**",
+					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 			};
 			name = Release;
@@ -1254,6 +1314,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1278,6 +1342,10 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
