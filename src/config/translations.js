@@ -32,7 +32,7 @@ i18n
         },
         userTypeStep: {
           title: 'Tampere app',
-          question: 'Are you',
+          question: 'Are you a citizen or a visitor?',
           options: {
             local: 'Tampere citizen',
             visitor: 'Visitor',
@@ -100,7 +100,7 @@ i18n
         },
         userTypeStep: {
           title: 'Tampere app',
-          question: 'Oletko',
+          question: 'Oletko tamperelainen vai vierailija?',
           options: {
             local: 'Tamperelainen',
             visitor: 'Vierailija',
