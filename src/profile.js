@@ -18,7 +18,7 @@ export const loadProfile = async () => {
   try {
     const valueJSON: string = await AsyncStorage.getItem(key);
     const profile = JSON.parse(valueJSON);
-    if (profile.locale) {
+    if (profile && profile.locale) {
       i18n.changeLanguage(profile.locale);
     }
     return profile;
