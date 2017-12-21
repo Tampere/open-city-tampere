@@ -90,16 +90,16 @@ const interestButtonProps = {
     color: colors.min,
   },
   labelSelectedStyle: {
-    color: colors.min,
+    color: colors.yellow,
   },
   containerStyle: {
     backgroundColor: 'transparent',
   },
   containerSelectedStyle: {
-    borderColor: colors.min,
+    borderColor: 'transparent',
   },
   iconColor: colors.min,
-  iconSelectedColor: colors.min,
+  iconSelectedColor: colors.yellow,
 };
 
 const areaButtonProps = {
