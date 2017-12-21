@@ -16,6 +16,10 @@ i18n
           'city-change-title': 'Open another city\'s app',
           loading: 'Loading...',
         },
+        tabs: {
+          home: 'Home',
+          profile: 'Profile',
+        },
         languageStep: {
           question: 'Choose a language',
           options: {
@@ -85,6 +89,10 @@ i18n
           finish: 'Valmis',
           'city-change-title': 'Avaa toisen kaupungin sovellus',
           loading: 'Ladataan...',
+        },
+        tabs: {
+          home: 'Koti',
+          profile: 'Profiili',
         },
         userTypeStep: {
           title: 'Tampere app',
