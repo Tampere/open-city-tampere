@@ -15,7 +15,7 @@ const styles = EStyleSheet.create({
   },
   listItem: {
     paddingHorizontal: 10,
-    paddingBottom: 10,
+    paddingBottom: 20,
   },
   listItemTitle: {
     color: colors.med,

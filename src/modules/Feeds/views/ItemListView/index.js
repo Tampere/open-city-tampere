@@ -80,7 +80,7 @@ class ItemListView extends React.Component<Props, State> {
               style={styles.listItem}
               onPress={() => navigation.navigate('ItemDetailView', { item, type: feed.name })}
             >
-              <Text style={styles.listItemTitle}>{item.title.toUpperCase()}</Text>
+              <Text style={styles.listItemTitle}>{item.title}</Text>
               <Text style={styles.listItemDate}>{t('published')} {item.date}</Text>
             </TouchableOpacity>
           ))}
