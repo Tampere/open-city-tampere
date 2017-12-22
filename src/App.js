@@ -7,6 +7,7 @@ import {
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import { withProps } from 'recompose';
 import { initColors } from 'open-city-modules';
+import { translate } from 'react-i18next';
 
 import tabs from 'src/config/tabs';
 import MyOnboarding from 'src/config/onboarding';
@@ -33,7 +34,7 @@ const Tabs = TabNavigator(tabs, {
   },
 });
 
-type Props = {};
+type Props = { i18n: any };
 type State = {
   loadingProfile: boolean,
   showOnboarding: boolean,
@@ -92,7 +93,7 @@ class App extends React.Component<Props, State> {
     const { profile } = this.state;
     const screenProps = {
       colors,
-      locale: 'fi',
+      locale: this.props.i18n.language,
       profile,
       restartOnboarding: this.restartOnboarding,
       // $FlowFixMe
@@ -107,4 +108,4 @@ class App extends React.Component<Props, State> {
   }
 }
 
-export default App;
+export default translate()(App);
