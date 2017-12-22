@@ -41,6 +41,7 @@ const ProfileTab = (props: Props) => {
   const { t, i18n } = props;
   const translatedUserType = t(`userTypeStep:options.${profile.userType}`);
   const translatedInterests = profile.interests.map(value => t(`interestStep:options.${value}`));
+  const translatedAreas = profile.areas.map(value => t(`areaStep:options.${value}`));
   const { Header } = props.screenProps;
   return (
     <View style={{ flex: 1 }}>
@@ -48,6 +49,7 @@ const ProfileTab = (props: Props) => {
       <View style={styles.container}>
         <Text style={styles.text}>{`${t('userType')}: ${translatedUserType}`}</Text>
         <ChoiceList title={`${t('interests')}:`} choices={translatedInterests} />
+        <ChoiceList title={`${t('areas')}:`} choices={translatedAreas} />
         <View style={styles.button}>
           <Button onPress={restartOnboarding} title={t('restartOnboarding')} />
         </View>

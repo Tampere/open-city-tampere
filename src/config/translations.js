@@ -64,7 +64,8 @@ i18n
         },
         profileTab: {
           userType: 'User type',
-          interests: 'Interests',
+          interests: 'Interested in topics',
+          areas: 'Interested in areas',
           restartOnboarding: 'Edit your choices',
           changeLanguage: 'Change language',
         },
@@ -133,6 +134,7 @@ i18n
         profileTab: {
           userType: 'Käyttäjätyyppi',
           interests: 'Kiinnostuksen kohteet',
+          areas: 'Kiinnostavat alueet',
           restartOnboarding: 'Muuta valintojasi',
           changeLanguage: 'Vaihda kieltä',
         },
