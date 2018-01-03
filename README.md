@@ -39,7 +39,7 @@ TODO
 
 ## Usage
 
-To start using skeleton codebase, fork this repository to make an new one for whitelabeled product.
+To start using skeleton codebase, fork this repository and make new one for white labeled product.
 It is advisable to keep Skeleton vanilla code in separate branch, named "skeleton" for example.
 This way it's easier to pull changes to skeleton and merge to feature/master branch of the product repo.
 Also bugfixes etc are easier to contribute upstream.
