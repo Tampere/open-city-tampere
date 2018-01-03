@@ -21,20 +21,52 @@ Open City Modules (https://github.com/haltu/open-city-modules) are separate pack
 
 
 ### Onboarding
-TODO
 
+The `Onboarding` component holds the choices made in the steps so far in its state
+and passes it to each step among other props. It receives the steps as an array
+of React Components. After the last step, the `onFinish` is called with the final
+`profile` object as an argument. When a splash screen is provided, it is shown
+before the first step. The first step is shown when the splash screen calls the
+`dismiss` function.
+
+The following props are passed to each step component:
+* next: (Profile) => void
+  - a function that goes to the next step and updates `profile`
+* previous: (Profile) => void
+  - a function that goes to the previous step and updates `profile`
+* profile: Profile
+  - The profile object that contains the choices made so far.
+* step: number
+  - The index of the current step (0..totalSteps-1)
+* totalSteps: number
+  - The total number of steps.
+* colors: ColorSet
+* locale: string
+
+An example configuration of the onboarding using the helper HoCs and components
+from `open-city-modules` repository can be found in the `config/onboarding.js` file.
 
 ### Tab navigation
-TODO
 
+Each tab receives the `screenProps` props with the following properties:
+
+* colors: ColorSet
+* locale: string
+* profile: Profile
+* restartOnboarding: () => void
+  - Can be used to restart the onboarding from within a module
+* Header: React.Component<any>
+  - The default header which can be used when the module doesn't need to show
+  its own header (e.g. for navigation or the title of the current view)
 
 ### City selection
-TODO
+
+The default header has a button that opens a list of other cities' apps.
 
 
 ### Profile
-TODO
 
+The profile tab shows the choices made in the onboarding.
 
 
 ## Usage
