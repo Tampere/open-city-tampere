@@ -102,6 +102,7 @@ In this example we're using the open-city-skeleton as the base for the project a
 * Fork the `open-city-skeleton` repository
 *  Create a new branch named `skeleton`. This branch should have the `open-city-skeleton` repository as upstream, so skeleton updates can be pulled to the branch and merged to the forked application.
 * Globally install [`react-native-rename`](https://www.npmjs.com/package/react-native-rename) package to rename the name and bundle identifier of the application.
+* Run `npm install`(note: Always use npm instead of yarn on `open-city-app` projects.)
 * Modules might have native dependencies which have to be manually installed to the base project. See [`open-city-modules` repository](https://github.com/6aika/open-city-modules) for instructions how to install native dependencies and customize each module.
   * In this case the Feedback and Homeview modules have the following native dependencies:
     - [react-native-maps](https://github.com/react-community/react-native-maps)
