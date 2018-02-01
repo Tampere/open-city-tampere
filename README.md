@@ -78,12 +78,79 @@ Also bugfixes etc are easier to contribute upstream.
 
 
 ### Theming and UI customization
-TODO
+In `src/config/colors.js` change the `max, med, min` values of the `colors` object.
+
+More colors can also be added to the object to be used in custom components and modules.
 
 
 ### Configuration
-TODO
+Onboarding, tabs, headers, translations and navigation components can be configured with the above instructios and by modifying the `App.js` file.
+
+To configurate open-city-modules, check the documentation for each module found in the [`open-city-modules` repository](https://github.com/6aika/open-city-modules).
 
 
-## Contributing
-TODO
+## Contributing to open-city-skeleton and open-city-modules 
+If you've built a new module or feature that you think would support the two base projects, you can merge the changes in the `skeleton` branch of your forked repository and send a pull request for your changes. If you want to build new modules to your application only, you could fork the modules repository and create a new module there or then just create the needed components straight to your forked project, just as in any other normal React Native project.
+
+
+### Step-by-step tutorial for a new Open City App
+
+This step-by-step tutorial's purpose is to help developers to start developing their new application using the configurable open city skeleton and modules. 
+
+In this example we're using the open-city-skeleton as the base for the project and using two modules, HomeView module and Feedback module.
+
+* Fork the `open-city-skeleton` repository
+*  Create a new branch named `skeleton`. This branch should have the `open-city-skeleton` repository as upstream, so skeleton updates can be pulled to the branch and merged to the forked application.
+* Globally install [`react-native-rename`](https://www.npmjs.com/package/react-native-rename) package to rename the name and bundle identifier of the application.
+* Modules might have native dependencies which have to be manually installed to the base project. See [`open-city-modules` repository](https://github.com/6aika/open-city-modules) for instructions how to install native dependencies and customize each module.
+  * In this case the Feedback and Homeview modules have the following native dependencies:
+    - [react-native-maps](https://github.com/react-community/react-native-maps)
+    - [react-native-image-picker](https://github.com/react-community/react-native-image-picker)
+    - [react-native-image-resizer](https://github.com/bamlab/react-native-image-resizer)
+
+* We add these packages as dependencies to our project with `npm install --save <package>`
+* After that we run `react-native link` to link the native dependencies.
+* To start using a module, just import it from the installed `open-city-modules` package:
+
+```
+import { FeedbackModule, configureFeedback, HomeViewModule } from 'open-city-modules';
+```
+
+Modules can be added as a tab in the following way:
+
+```
+/* src/config/tabs.js */
+
+const tabs = {
+  HomeView: {
+    screen: withProps({})(HomeViewModule),
+    navigationOptions: () => ({
+      title: 'Koti',
+      tabBarIcon: iconProvider('home'),
+    }),
+  },
+  Feedback: {
+    screen: withProps({ showSubHeader: false })(FeedbackModule),
+    navigationOptions: () => ({
+      title: i18n.t('tabs:feedback'),
+      tabBarIcon: iconProvider('history'),
+    }),
+  },
+};
+```
+
+To configure each module, we check the default configuration for the module shown in [`open-city-modules` documentation](https://github.com/6aika/open-city-modules). Copy the default config and create a new file named e.g. `feedbackConfig.json`. In the file you can change module settings you wish to override by using the `configureFeedback` function we imported earlier:
+
+```
+import feedbackConfig from './feedbackConfig.json'
+
+configureFeedback(feedbackConfig)
+```
+
+Then we can set the default colors for our application in `src/config/colors.js`.
+
+Just change the `max, med, min` values in the `colors` object. The default modules support only three main colors, but you could add other theme colors too for your own modules you create.
+
+FeedbackModule uses `react-native-maps` Google Maps to show the map for the user, which means we have to create a new API key foor Google Maps API and add it to `AndroidManifest.xml` as shown [here](https://developers.google.com/maps/documentation/ios-sdk/get-api-key)
+
+
