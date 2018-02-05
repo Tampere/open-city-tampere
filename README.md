@@ -6,7 +6,9 @@ This repository includes the RN project structure and implements fundamental par
 Open City Modules (https://github.com/haltu/open-city-modules) are separate packages that implement some specific functionality and can be installed to the derivate app.
 
 Open City Skeleton and Open City Modules have been developed using:
+
 `"react": "16.0.0"`
+
 `"react-native": "0.50.3"`
 
 
