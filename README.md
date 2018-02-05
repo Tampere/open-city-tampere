@@ -5,6 +5,10 @@ Open City Skeleton is a reusable React Native application skeleton for creating 
 This repository includes the RN project structure and implements fundamental parts of the application, including UI flow.
 Open City Modules (https://github.com/haltu/open-city-modules) are separate packages that implement some specific functionality and can be installed to the derivate app.
 
+Open City Skeleton and Open City Modules have been developed using:
+`"react": "16.0.0"`
+`"react-native": "0.50.3"`
+
 
 ## Features
 
@@ -154,4 +158,4 @@ Just change the `max, med, min` values in the `colors` object. The default modul
 
 FeedbackModule uses `react-native-maps` Google Maps to show the map for the user, which means we have to create a new API key foor Google Maps API and add it to `AndroidManifest.xml` as shown [here](https://developers.google.com/maps/documentation/ios-sdk/get-api-key)
 
-
+Run the project with `react-native run-android`
