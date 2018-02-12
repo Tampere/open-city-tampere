@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { withProps } from 'recompose';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { FeedbackModule, configureFeedback } from 'open-city-modules';
+import { FeedbackModule, configureFeedback, HomeViewModule  } from 'open-city-modules';
 import feedbackConfig from 'src/config/feedbackConfig.json';
 import Feeds from 'src/modules/Feeds';
 import ProfileTab from 'src/components/ProfileTab';
@@ -18,9 +18,9 @@ const iconProvider = (name: string) => ({ tintColor }: { tintColor: string }) =>
 
 const tabs = {
   Home: {
-    screen: Feeds,
+    screen: HomeViewModule,
     navigationOptions: () => ({
-      title: i18n.t('tabs:feeds'),
+      title: i18n.t('tabs:home'),
       tabBarIcon: iconProvider('history'),
     }),
   },

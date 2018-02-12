@@ -100,6 +100,8 @@ class App extends React.Component<Props, State> {
       restartOnboarding: this.restartOnboarding,
       // $FlowFixMe
       Header: this.Header,
+      showHero: false,
+      showHearings: false,
     };
     return (
       <View style={{ flex: 1 }}>
