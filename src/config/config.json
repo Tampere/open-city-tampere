@@ -1,3 +1,9 @@
 {
-  "asyncStoragePrefix": "OpenCitySkeleton"
+  "asyncStoragePrefix": "OpenCitySkeleton",
+  "TIMEOUT_TRESHOLD": 5000,
+  "TIMEOUT_MESSAGE": "Connection timed out",
+  "OPENID_ISSUER": "https://auth.tampere.fi/openid",
+  "OPENID_CLIENT_ID": "ENTER OPENID CLIENT ID HERE",
+  "OPENID_REDIRECT_URL": "opencitytampere://auth/callback",
+  "OPENID_SCOPES": ["openid", "profile"],
 }
