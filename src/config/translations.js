@@ -9,6 +9,7 @@ i18n
     resources: {
       en: {
         common: {
+          signIn: 'Sign in',
           title: 'Tampere app',
           next: 'Next',
           previous: 'Previous',
@@ -63,8 +64,13 @@ i18n
           },
         },
         authStep: {
+          signIn: 'Sign in',
           title: 'Tampere app',
           question: 'Sign in',
+          loginDescription: 'By logging in you can reserve spaces and the application will remember your preferences.',
+          noLoginDescription: 'You can also use the app without signing in.',
+          loginFail: 'Sign in failed. Try again or continue without signing in.',
+          alreadyLoggedIn: 'You are already logged in.',
         },
         profileTab: {
           userType: 'User type',
@@ -136,8 +142,13 @@ i18n
           },
         },
         authStep: {
+          signIn: 'Kirjaudu',
           title: 'Tampere app',
           question: 'Kirjaudu sisään',
+          loginDescription: 'Kirjautumalla sisään pääset varaamaan tiloja ja voit muuttaa älypuhelimesi kirjastokortiksi.',
+          noLoginDescription: 'Voit käyttää sovellusta myös kirjautumatta.',
+          loginFail: 'Kirjautuminen epäonnistui. Yritä uudelleen tai jatka kirjautumatta.',
+          alreadyLoggedIn: 'Olet jo kirjautunut sisään.',
         },
         profileTab: {
           userType: 'Käyttäjätyyppi',

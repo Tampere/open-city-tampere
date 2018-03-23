@@ -7,40 +7,92 @@ import {
   Picker,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator,
+  Dimensions,
 } from 'react-native';
 import { type Profile } from 'src/types';
 import { doAuth } from 'src/utils/auth';
-import { updateProfile } from 'src/profile';
+import { updateProfile, isAuthed } from 'src/profile';
 import colors from 'src/config/colors';
+import { translate } from 'react-i18next';
 
 let styles;
 
-const authorize = async () => {
-  try {
-    const authorization = await doAuth();
-    updateProfile({ auth: authorization });
-  } catch (error) {
-    console.error(error);
-  }
-}
-const AuthStep = (props: Props) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.body}>Kirjautumalla sisään pääset varaamaan tiloja ja voit muuttaa älypuhelimesi kirjastokortiksi.</Text>
-      <Text style={styles.body}>Voit käyttää sovellusta myös kirjautumatta</Text>
-      <View style={styles.buttonContainer} >
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => authorize()}
-        >
-          <View>
-            <Text style={styles.buttonText}>Kirjaudu</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
+type Props = {
+  // Provided by create(Single|Multi)ChoiceStep
+  next: () => null,
+  profile: Object,
+};
 
+class AuthStep extends React.Component {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      isAuthorized: false,
+      error: null,
+      loading: false,
+    };
+  }
+
+  componentWillMount = async () => {
+    this.setState({ isAuthorized: await isAuthed() })
+  }
+
+  authorize = async () => {
+    const { next, profile } = this.props;
+    try {
+      this.setState({ loading: true });
+      console.warn(profile)
+      const authorization = await doAuth();
+      const myProfile = { ...profile, auth: authorization };
+      this.setState({ loading: false });
+      this.props.next(myProfile);
+    } catch (error) {
+      this.setState({ error: true, loading: false })
+      console.error(error);
+    }
+  }
+
+  render() {
+    const { t } = this.props;
+
+    console.warn(Object.keys(this.props))
+    if (!this.state.isAuthorized) {
+      return(
+        <View style={styles.container}>
+          <Text style={styles.body}>{t('loginDescription')}</Text>
+          <Text style={styles.body}>{t('noLoginDescription')}</Text>
+          { this.state.error &&
+            <Text style={styles.error}>{t('loginFail')}</Text>
+          }
+          <View style={styles.buttonContainer} >
+            <TouchableOpacity
+              disabled={this.state.loading}
+              style={styles.button}
+              onPress={() => this.authorize()}
+            >
+              <View>
+                { !this.state.loading &&
+                  <Text style={styles.buttonText}>{t('signIn')}</Text>
+                }
+                { this.state.loading &&
+                  <ActivityIndicator style={styles.loading} size="small" />
+                }
+              </View>
+            </TouchableOpacity>
+          </View>
+
+        </View>
+      )
+    } else if (this.state.isAuthorized) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.body}>{t('alreadyLoggedIn')}</Text>
+        </View>
+      );
+    }
+  }
 };
 
 styles = StyleSheet.create({
@@ -70,6 +122,9 @@ styles = StyleSheet.create({
     paddingHorizontal: 24,
     backgroundColor: colors.med,
     paddingVertical: 8,
+    width: '45%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonText: {
     color: colors.min,
@@ -78,6 +133,12 @@ styles = StyleSheet.create({
   changeLanguage: {
     alignSelf: 'stretch',
   },
+  error: {
+    color: 'red',
+    fontSize: 18,
+    textAlign: 'center',
+    width: '100%'
+  },
 });
 
-export default AuthStep;
+export default translate(['authStep'])(AuthStep);
