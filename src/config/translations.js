@@ -62,6 +62,10 @@ i18n
             finlayson: 'Finlayson',
           },
         },
+        authStep: {
+          title: 'Tampere app',
+          question: 'Sign in',
+        },
         profileTab: {
           userType: 'User type',
           interests: 'Interested in topics',
@@ -130,6 +134,10 @@ i18n
             pispala: 'Pispala',
             finlayson: 'Finlayson',
           },
+        },
+        authStep: {
+          title: 'Tampere app',
+          question: 'Kirjaudu sisään',
         },
         profileTab: {
           userType: 'Käyttäjätyyppi',

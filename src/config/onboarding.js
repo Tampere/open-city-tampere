@@ -1,12 +1,15 @@
 import Onboarding from 'src/components/Onboarding';
 import { translate } from 'react-i18next';
 import { withProps } from 'recompose';
+import React, { Component}  from 'react';
 import {
   createSingleChoiceStep,
   createMultiChoiceStep,
   ChoiceView,
   SplashScreen,
 } from 'open-city-modules';
+import { View, Text } from 'react-native';
+import AuthView from 'src/components/AuthStep';
 import i18n from 'src/config/translations';
 import colors from 'src/config/colors';
 import finlayson from 'TampereApp/img/areas/finlayson.png';
@@ -62,6 +65,11 @@ const areaProps = {
   choiceKey: 'areas',
   options: areaOptions,
 };
+const authProps = {
+  choiceKey: 'auth',
+  options: [],
+};
+
 
 // Styling props for view components
 const listButtonProps = {
@@ -153,6 +161,16 @@ const AreaChoiceView = withProps({
   bgImage: bg3_4,
   bottomBarProps,
 })(ChoiceView);
+const AuthStepView = withProps({
+  mode: 'custom',
+  buttonProps: areaButtonProps,
+  containerStyle,
+  contentStyle: { paddingTop: 30 },
+  questionStyle,
+  bgImage: bg3_4,
+  bottomBarProps,
+  customView: <AuthView/>,
+})(ChoiceView);
 
 let LanguageStep = createSingleChoiceStep(LanguageView, (profile) => {
   if (profile.locale) {
@@ -174,6 +192,11 @@ let AreaStep = createMultiChoiceStep(AreaChoiceView);
 AreaStep = withProps(areaProps)(AreaStep);
 AreaStep = translate('areaStep')(AreaStep);
 
+let AuthStep = createMultiChoiceStep(AuthStepView);
+AuthStep = withProps(authProps)(AuthStep);
+AuthStep = translate('authStep')(AuthStep);
+
+
 const MySplash = withProps({
   bgImage: bgSplash,
   logo,
@@ -185,7 +208,7 @@ const MySplash = withProps({
 })(SplashScreen);
 const onboardingProps = {
   splash: MySplash,
-  steps: [LanguageStep, UserTypeStep, InterestStep, AreaStep],
+  steps: [LanguageStep, UserTypeStep, InterestStep, AreaStep, AuthStep],
 };
 
 const MyOnboarding = withProps(onboardingProps)(Onboarding);
