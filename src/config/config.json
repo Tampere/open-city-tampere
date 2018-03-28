@@ -1,9 +1,12 @@
 {
   "asyncStoragePrefix": "TampereApp",
   "TIMEOUT_TRESHOLD": 5000,
+  "TIMEOUT_THRESHOLD": 5000,
   "TIMEOUT_MESSAGE": "Connection timed out",
   "OPENID_ISSUER": "https://auth.tampere.fi/openid",
   "OPENID_CLIENT_ID": "OPEN ID CLIENT ID",
   "OPENID_REDIRECT_URL": "opencitytampere://auth/callback",
   "OPENID_SCOPES": ["openid", "profile"],
+  // VARAAMO
+  "RESPA_BASE_URL": "https://respa.tampere.fi/v1/"
 }

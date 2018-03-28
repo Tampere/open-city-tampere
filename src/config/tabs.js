@@ -5,6 +5,7 @@ import { withProps } from 'recompose';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { FeedbackModule, configureFeedback, HomeViewModule  } from 'open-city-modules';
+import Varaamo from 'src/modules/Varaamo'
 import feedbackConfig from 'src/config/feedbackConfig.json';
 import Feeds from 'src/modules/Feeds';
 import ProfileTab from 'src/components/ProfileTab';
@@ -38,7 +39,13 @@ const tabs = {
       tabBarIcon: iconProvider('account'),
     }),
   },
-
+  Varaamo: {
+    screen: Varaamo,
+    navigationOptions: () => ({
+      title: i18n.t('tabs:varaamo'),
+      tabBarIcon: iconProvider('account'),
+    }),
+  },
 };
 
 export default tabs;
