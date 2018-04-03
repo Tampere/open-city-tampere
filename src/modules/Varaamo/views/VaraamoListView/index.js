@@ -6,6 +6,9 @@ import {
 } from 'react-native';
 import Config from 'src/config/config.json';
 import { makeRequest } from 'src/utils/requests';
+import { getUnit, getResources } from 'src/modules/Varaamo/utils/respa';
+import Picker from 'src/components/Picker';
+import DatePicker from 'src/modules/Varaamo/components/DatePicker';
 import ResourceListItem from '../../components/ResourceListItem';
 import styles from './styles';
 /*
@@ -23,45 +26,49 @@ class VaraamoListView extends React.Component {
 
   _keyExtractor = (item, index) => item.id;
 
-  componentWillMount = () => {
+  componentWillMount = async () => {
     const url = Config.RESPA_BASE_URL + 'resource/'
-    this.getResources(url);
-  }
-
-  getUnit = async (unitId) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const url = Config.RESPA_BASE_URL + 'unit/' + unitId;
-        const unit = await makeRequest(url, 'GET', null, null, null);
-        resolve(unit);
-      } catch (error) {
-        reject(error)
-      }
-    })
-  }
-
-  getResources = async (url) => {
-
-    const headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    };
-    console.warn(url)
-    const resources = await makeRequest(url, 'GET', headers, null, null);
-    console.warn(resources)
-    console.warn(Object.keys(resources.results))
-
-    for (let i = 0; i < resources.results.length; i++) {
-      const unit = await this.getUnit(resources.results[i].unit);
-      resources.results[i].unit = unit;
-    }
-
-    this.setState({ resources: resources.results });
-
+    const resources = await getResources(url);
+    this.setState({ resources })
   }
 
   loadMore = () => {
 
+  }
+
+  onDataChange = (data) => {
+    console.warn(data)
+  }
+
+  renderHeader = () => {
+    return(
+      <View>
+        <Picker
+          label={('Mitä haluat tehdä?').toUpperCase()}
+          placeholder={'Valitse'}
+          value={''}
+          data={[
+          { key: 1, section: true, label: 'Vaihtoehdot' },
+          { key: 2, label: 'Valinta 1' },
+          { key: 3, label: 'Valinta 2' },]}
+          onChangeSelection={this.onDataChange}
+        />
+        <DatePicker
+          label={('Milloin?').toUpperCase()}
+          placeholder={'typePlaceholder'}
+          value={'1.4.2018'}
+        />
+        <DatePicker
+          label={('Montako henkeä?').toUpperCase()}
+          placeholder={'typePlaceholder'}
+          value={'1'}
+        />
+      </View>
+    )
+  }
+
+  goToDetail = (item) => {
+    this.props.navigation.navigate('ResourceDetail', { item })
   }
 
   renderItem = (resource) => {
@@ -71,6 +78,7 @@ class VaraamoListView extends React.Component {
     // console.warn(unit)
     return(
       <ResourceListItem
+        onPress={() => this.goToDetail(resource.item)}
         item={resource.item}
       />
     )
@@ -79,10 +87,12 @@ class VaraamoListView extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+
         <FlatList
-          data={this.state.resources}
+          data={this.state.resources.results}
           keyExtractor={this._keyExtractor}
           renderItem={this.renderItem}
+          ListHeaderComponent={this.renderHeader}
         />
       </View>
     )

@@ -30,11 +30,15 @@ const ResourceListItem = (props: Props) => {
     type,
     reservable,
     people_capacity,
+    onPress,
   } = props.item;
   const imageUrl = images.length > 0 && images[0].url;
   return (
     <TouchableWithoutFeedback
-      onPress={() => console.warn(name.fi)}
+      onPress={() => {
+        console.warn("click")
+        props.onPress()
+      }}
       >
       <View style={styles.container}>
         <View style={styles.thumbnailContainer}>

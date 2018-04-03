@@ -2,92 +2,98 @@ import * as React from 'react';
 import {
   View,
   FlatList,
-  Text
+  Text,
+  ScrollView,
+  Image,
 } from 'react-native';
 import Config from 'src/config/config.json';
-import { makeRequest } from 'src/utils/requests';
-import ResourceListItem from '../../components/ResourceListItem';
 import styles from './styles';
 /*
  View for listing Varaamo reservations
  */
-class VaraamoListView extends React.Component {
+class ResourceDetailView extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      resources: [],
     };
   }
-
-  _keyExtractor = (item, index) => item.id;
 
   componentWillMount = () => {
-    const url = Config.RESPA_BASE_URL + 'resource/'
-    this.getResources(url);
+
   }
 
-  getUnit = async (unitId) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const url = Config.RESPA_BASE_URL + 'unit/' + unitId;
-        const unit = await makeRequest(url, 'GET', null, null, null);
-        resolve(unit);
-      } catch (error) {
-        reject(error)
-      }
-    })
-  }
-
-  getResources = async (url) => {
-
-    const headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    };
-    console.warn(url)
-    const resources = await makeRequest(url, 'GET', headers, null, null);
-    console.warn(resources)
-    console.warn(Object.keys(resources.results))
-    this.setState({ resources: resources.results });
-
-    for (let i = 0; i < resources.results.length; i++) {
-      const unit = await this.getUnit(resources.results[i].unit);
-      resources.results[i].unit = unit;
+  formatPrice = (minPrice, maxPrice) => {
+    if (minPrice === maxPrice && (minPrice !== null && maxPrice !== null)) {
+      return (minPrice + ' €/h');
+    } else if (minPrice && maxPrice && minPrice !== 'null' && maxPrice !== 'null') {
+      console.warn(minPrice)
+      return (minPrice + ' - ' + maxPrice + ' €/h');
+    } else {
+      return '0,00 €/h'
     }
-
-    this.setState({ resources: resources.results });
-
-  }
-
-  loadMore = () => {
-
-  }
-
-  renderItem = (resource) => {
-    // console.warn(resource.item.unit)
-    // const unit = await this.getUnit(resource.item.unit)
-    // console.warn("unit2")
-    // console.warn(unit)
-    return(
-      <ResourceListItem
-        item={resource.item}
-      />
-    )
   }
 
   render() {
+    const { item } = this.props.navigation.state.params;
+    const imageUrl = item.images.length > 0 && item.images[0].url;
+
+    console.warn(item.name)
     return (
-      <View style={styles.container}>
-        <FlatList
-          data={this.state.resources}
-          keyExtractor={this._keyExtractor}
-          renderItem={this.renderItem}
-        />
-      </View>
-    )
+      <ScrollView style={{ flex: 1 }}>
+        <View style={styles.container}>
+          <View style={styles.titleContainer}>
+            <Text
+              style={styles.itemName}
+              numberOfLines={1}
+            >
+              {item.name.fi}
+            </Text>
+            <Text style={styles.itemLocation}>{item.unit.name && item.unit.name.fi}</Text>
+            <Text style={styles.itemLocation}>{item.unit.street_address && item.unit.street_address.fi}</Text>
+          </View>
+          <View style={styles.thumbnailContainer}>
+            <Image
+              style={{width: '100%', height: '100%'}}
+              source={{ uri: imageUrl }}
+            />
+            <View style={styles.thumbnailDescriptionContainer}>
+              <Text style={styles.thumbnailDescription}>{this.formatPrice(item.min_price_per_hour, item.max_price_per_hour)}</Text>
+            </View>
+          </View>
+          <View style={styles.bodyContainer}>
+            <Text style={styles.description}>{item.description.fi}</Text>
+          </View>
+        </View>
+      </ScrollView>
+    );
+
+    // return (
+    //     <View style={styles.container}>
+    //       <View style={styles.thumbnailContainer}>
+    //         <Image
+    //           style={{width: '100%', height: '100%'}}
+    //           source={{ uri: 'https://respa.tampere.fi/resource_image/57' }}
+    //         />
+    //         <Text style={styles.thumbnailDescription}>{formatPrice(props.item.min_price_per_hour, props.item.max_price_per_hour)}</Text>
+    //       </View>
+    //       <View style={styles.descriptionContainer}>
+    //         <Text
+    //           style={styles.itemName}
+    //           numberOfLines={1}
+    //         >
+    //           {props.item.name.fi}
+    //         </Text>
+    //         <Text style={styles.itemLocation}>{props.item.unit.name && props.item.unit.name.fi}</Text>
+    //         <View style={styles.itemFooter}>
+    //           <Text style={styles.availabilityText}>{ props.item.reservable ? 'Vapaana' : 'Varattu'}</Text>
+    //           <Text style={styles.typeText}>{props.item.type.name.fi}</Text>
+    //         </View>
+    //       </View>
+    //     </View>
+    // )
   }
 }
 
-export default VaraamoListView;
+export default ResourceDetailView;

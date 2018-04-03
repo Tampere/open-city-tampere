@@ -16,7 +16,7 @@ const styles = EStyleSheet.create({
     bottom: 0,
     left: 0,
     padding: 4,
-    backgroundColor: '$colors.med'
+    backgroundColor: '$colors.med',
   },
   thumbnailCapacity: {
     backgroundColor: '$colors.med',
