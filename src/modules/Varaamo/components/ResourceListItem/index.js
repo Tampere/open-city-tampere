@@ -16,7 +16,7 @@ const formatPrice = (minPrice, maxPrice) => {
     console.warn(minPrice)
     return (minPrice + ' - ' + maxPrice + ' €/h');
   } else {
-    return '0,00 €/h'
+    return 'Maksuton'
   }
 }
 
@@ -30,13 +30,11 @@ const ResourceListItem = (props: Props) => {
     type,
     reservable,
     people_capacity,
-    onPress,
   } = props.item;
   const imageUrl = images.length > 0 && images[0].url;
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        console.warn("click")
         props.onPress()
       }}
       >
