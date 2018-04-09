@@ -20,6 +20,20 @@ const formatPrice = (minPrice, maxPrice) => {
   }
 }
 
+const isResourceReservable = (item) => {
+  if (item.opening_hours[0]
+    && item.opening_hours[0].opens
+    && item.reservable) {
+    return 'Vapaa';
+  }
+
+  if (item.reservable) {
+    return 'Suljettu'
+  }
+
+  return 'Varattu';
+};
+
 const ResourceListItem = (props: Props) => {
   const {
     name,
@@ -30,6 +44,7 @@ const ResourceListItem = (props: Props) => {
     type,
     reservable,
     people_capacity,
+    opening_hours,
   } = props.item;
   const imageUrl = images.length > 0 && images[0].url;
   return (
@@ -61,8 +76,8 @@ const ResourceListItem = (props: Props) => {
           </Text>
           <Text style={styles.itemLocation}>{unit.name.fi}</Text>
           <View style={styles.itemFooter}>
-            <View style={[styles.availabilityContainer, reservable ? styles.available : styles.disabled]}>
-              <Text style={styles.availabilityText}>{ reservable ? 'VAPAA' : 'VARATTU'}</Text>
+            <View style={[styles.availabilityContainer, (reservable && opening_hours && opening_hours[0].opens) ? styles.available : styles.disabled]}>
+              <Text style={styles.availabilityText}>{ isResourceReservable(props.item) ? 'VAPAA' : 'SULJETTU'}</Text>
             </View>
             <Text style={styles.typeText}>{type.name.fi}</Text>
           </View>

@@ -12,6 +12,7 @@ import styles from './styles';
 import Moment from 'moment';
 import { Calendar } from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { getResource } from 'src/modules/Varaamo/utils/respa';
 import colors from 'src/config/colors';
 import TimeChooser from 'src/modules/Varaamo/components/TimeChooser';
 import { isAuthed, updateProfile } from 'src/profile';
@@ -27,12 +28,44 @@ class ResourceDetailView extends React.Component {
 
     this.state = {
       authed: false,
+      item: this.props.navigation.state.params.item,
+      openingHours: this.props.navigation.state.params.item.opening_hours[0],
+      selected: null,
+      markedDates: null,
     };
   }
 
   componentWillMount = async () => {
     const authed = await isAuthed();
-    this.setState({ authed });
+
+    const itemId = this.props.navigation.state.params.item.id;
+    const startDate = Moment(new Date()).format('YYYY-MM-DD');
+    const endDate = Moment(new Date()).add(30, 'days').format('YYYY-MM-DD');
+    const getParams = `?start=${startDate}&end=${endDate}`
+    const item = await getResource(itemId, getParams);
+    const markedDates = this.getMarkedDates(item);
+    this.setState({
+      authed,
+      item,
+      markedDates,
+      visibleMarkedDates: markedDates,
+    });
+  }
+
+  getResourceDetails = async () => {
+
+  }
+
+  getMarkedDates = (item) => {
+    const openingHours = item.opening_hours;
+    let markedDates = {};
+    for (let i = 0; i < openingHours.length; i++) {
+      mDate = openingHours[i];
+      markedDates[mDate.date] = { marked: true, dotColor: mDate.opens ? 'green' : 'red' }
+    }
+
+
+    return markedDates;
   }
 
   authorize = async () => {
@@ -51,7 +84,6 @@ class ResourceDetailView extends React.Component {
     if (minPrice === maxPrice && (minPrice !== null && maxPrice !== null)) {
       return (minPrice + ' €/h');
     } else if (minPrice && maxPrice && minPrice !== 'null' && maxPrice !== 'null') {
-      console.warn(minPrice)
       return (minPrice + ' - ' + maxPrice + ' €/h');
     } else {
       return 'Maksuton'
@@ -74,20 +106,36 @@ class ResourceDetailView extends React.Component {
       timeString = timeString + minutes + ' minuuttia '
     }
     return timeString;
-
   }
 
+
+
   onDayPress = (day) => {
+    const selectedDate = Moment(new Date(day.timestamp));
+    const openingHours = this.state.item.opening_hours;
+    let selectedOpeningHours = this.state.item.opening_hours[0];
+    const markedDates = JSON.parse(JSON.stringify(this.state.markedDates))
+
+    for (let i = 0; i < openingHours.length; i++) {
+      const mDate = Moment(new Date(openingHours[i].date));
+      if (selectedDate.isSame(mDate, 'day')) {
+        selectedOpeningHours = openingHours[i];
+      }
+    }
+
+    const selected = { [day.dateString]: {selected: true, disableTouchEvent: true}};
+    const visibleMarkedDates = Object.assign(markedDates, selected);
+
     this.setState({
-      selected: day.dateString
+      openingHours: selectedOpeningHours,
+      visibleMarkedDates: visibleMarkedDates
     });
   }
 
   render() {
-    const { item } = this.props.navigation.state.params;
+    const { item } = this.state;
     const imageUrl = item.images.length > 0 && item.images[0].url;
 
-    console.warn(item.name)
     return (
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.container}>
@@ -131,10 +179,14 @@ class ResourceDetailView extends React.Component {
             <Calendar
               onDayPress={this.onDayPress}
               style={styles.calendar}
+              firstDay={1}
               hideExtraDays
-              markedDates={{[this.state.selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}}}
+              markedDates={this.state.visibleMarkedDates}
+              />
+            <TimeChooser
+              openingHours={this.state.openingHours}
+              interval={this.state.item.min_period}
             />
-            <TimeChooser item={item} />
           </View>
         </View>
       </ScrollView>

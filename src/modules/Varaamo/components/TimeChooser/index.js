@@ -9,22 +9,17 @@ import styles from './styles';
 import colors from 'src/config/colors';
 import moment from 'moment';
 
-const getButtonList = (item) => {
-  const {
-    min_period,
-    opening_hours
-  } = item;
-
+const getButtonList = (openingHours, interval) => {
   const {
     closes,
     opens,
     date
-  } = opening_hours[0];
+  } = openingHours;
 
   const openingHour = moment(opens);
   const closingHour = moment(closes)
   const ms = closingHour.diff(openingHour);
-  const period = moment(min_period, 'HH:mm:ss');
+  const period = moment(interval, 'HH:mm:ss');
   const periodMs = (period.hours() * 3600000) + (period.minutes() * 60000);
   const intervals = Math.floor(ms / periodMs);
   const buttons = [];
@@ -39,18 +34,11 @@ const getButtonList = (item) => {
     })
   }
 
-  if (buttons.length === 0) {
-    buttons.push({
-      time: moment('08:00:00', 'HH:mm:ss'),
-      timeString: '08:00'
-    })
-  }
-
   return buttons;
 };
 
 const ResourceListItem = (props: Props) => {
-  const buttons = getButtonList(props.item);
+  const buttons = getButtonList(props.openingHours, props.interval);
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -62,6 +50,9 @@ const ResourceListItem = (props: Props) => {
               </View>
             </TouchableOpacity>
           ))
+        }
+        { buttons.length === 0 &&
+          <Text style={{ fontSize: 20 }}>Tila on kiinni tänä päivänä.</Text>
         }
       </View>
     </View>

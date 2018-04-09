@@ -33,3 +33,23 @@ export const getResources = async (url) => {
     }
   })
 };
+
+export const getResource = async (id, params) => {
+  return new Promise(async (resolve, reject) => {
+    let url = Config.RESPA_BASE_URL + 'resource/' + id;
+    const headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+
+    if (params) url = url + params;
+
+    try {
+      const resource = await makeRequest(url, 'GET', headers, null, null);
+      console.warn(resource)
+      resolve(resource);
+    } catch (error) {
+      reject(error);
+    }
+  })
+}
