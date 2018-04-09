@@ -40,10 +40,10 @@ class ResourceDetailView extends React.Component {
 
     const itemId = this.props.navigation.state.params.item.id;
     const startDate = Moment(new Date()).format('YYYY-MM-DD');
-    const endDate = Moment(new Date()).add(30, 'days').format('YYYY-MM-DD');
+    const endDate = Moment(new Date()).add(60, 'days').format('YYYY-MM-DD');
     const getParams = `?start=${startDate}&end=${endDate}`
     const item = await getResource(itemId, getParams);
-    const markedDates = this.getMarkedDates(item);
+    const markedDates = this.getMarkedDates(item)
     this.setState({
       authed,
       item,
@@ -63,7 +63,6 @@ class ResourceDetailView extends React.Component {
       mDate = openingHours[i];
       markedDates[mDate.date] = { marked: true, dotColor: mDate.opens ? 'green' : 'red' }
     }
-
 
     return markedDates;
   }
@@ -132,6 +131,20 @@ class ResourceDetailView extends React.Component {
     });
   }
 
+  onMonthChanged = async (month) => {
+    const itemId = this.props.navigation.state.params.item.id;
+    const startDate = Moment(new Date()).format('YYYY-MM-DD');
+    const endDate = Moment(new Date(month.dateString)).add(60, 'days').format('YYYY-MM-DD');
+    const getParams = `?start=${startDate}&end=${endDate}`
+    const item = await getResource(itemId, getParams);
+    const markedDates = this.getMarkedDates(item)
+    this.setState({
+      item,
+      markedDates,
+      visibleMarkedDates: markedDates,
+    });
+  }
+
   render() {
     const { item } = this.state;
     const imageUrl = item.images.length > 0 && item.images[0].url;
@@ -182,6 +195,7 @@ class ResourceDetailView extends React.Component {
               firstDay={1}
               hideExtraDays
               markedDates={this.state.visibleMarkedDates}
+              onMonthChange={(month) => this.onMonthChanged(month)}
               />
             <TimeChooser
               openingHours={this.state.openingHours}
