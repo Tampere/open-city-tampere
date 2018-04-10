@@ -62,6 +62,7 @@ const styles = EStyleSheet.create({
     fontWeight: 'bold',
   },
   calendar: {
+    marginVertical: 16,
     borderTopWidth: 1,
     paddingTop: 5,
     borderBottomWidth: 1,

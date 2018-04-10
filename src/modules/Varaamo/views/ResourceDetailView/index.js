@@ -39,16 +39,21 @@ class ResourceDetailView extends React.Component {
     const authed = await isAuthed();
 
     const itemId = this.props.navigation.state.params.item.id;
+    const selectedDate = this.props.navigation.state.params.date
     const startDate = Moment(new Date()).format('YYYY-MM-DD');
     const endDate = Moment(new Date()).add(60, 'days').format('YYYY-MM-DD');
     const getParams = `?start=${startDate}&end=${endDate}`
     const item = await getResource(itemId, getParams);
     const markedDates = this.getMarkedDates(item)
+    const mMarkedDates = JSON.parse(JSON.stringify(markedDates))
+    const selected = { [selectedDate.dateString]: {selected: true, disableTouchEvent: true}};
+    const visibleMarkedDates = Object.assign(mMarkedDates, selected);
+
     this.setState({
       authed,
       item,
       markedDates,
-      visibleMarkedDates: markedDates,
+      visibleMarkedDates: visibleMarkedDates,
     });
   }
 
@@ -189,14 +194,16 @@ class ResourceDetailView extends React.Component {
                 <Text style={styles.maxPeriod}>Sinun on kirjauduttava sisään tehdäksesi varauksia.</Text>
               </TouchableOpacity>
             }
-            <Calendar
-              onDayPress={this.onDayPress}
-              style={styles.calendar}
-              firstDay={1}
-              hideExtraDays
-              markedDates={this.state.visibleMarkedDates}
-              onMonthChange={(month) => this.onMonthChanged(month)}
+            <View style={{marginVertical: 16}}>
+              <Calendar
+                onDayPress={this.onDayPress}
+                style={styles.calendar}
+                firstDay={1}
+                hideExtraDays
+                markedDates={this.state.visibleMarkedDates}
+                onMonthChange={(month) => this.onMonthChanged(month)}
               />
+            </View>
             <TimeChooser
               openingHours={this.state.openingHours}
               interval={this.state.item.min_period}
@@ -205,31 +212,6 @@ class ResourceDetailView extends React.Component {
         </View>
       </ScrollView>
     );
-
-    // return (
-    //     <View style={styles.container}>
-    //       <View style={styles.thumbnailContainer}>
-    //         <Image
-    //           style={{width: '100%', height: '100%'}}
-    //           source={{ uri: 'https://respa.tampere.fi/resource_image/57' }}
-    //         />
-    //         <Text style={styles.thumbnailDescription}>{formatPrice(props.item.min_price_per_hour, props.item.max_price_per_hour)}</Text>
-    //       </View>
-    //       <View style={styles.descriptionContainer}>
-    //         <Text
-    //           style={styles.itemName}
-    //           numberOfLines={1}
-    //         >
-    //           {props.item.name.fi}
-    //         </Text>
-    //         <Text style={styles.itemLocation}>{props.item.unit.name && props.item.unit.name.fi}</Text>
-    //         <View style={styles.itemFooter}>
-    //           <Text style={styles.availabilityText}>{ props.item.reservable ? 'Vapaana' : 'Varattu'}</Text>
-    //           <Text style={styles.typeText}>{props.item.type.name.fi}</Text>
-    //         </View>
-    //       </View>
-    //     </View>
-    // )
   }
 }
 

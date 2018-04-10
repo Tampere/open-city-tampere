@@ -12,6 +12,7 @@ import {
   TextInput,
 } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import Calendar from 'react-native-calendars';
 import Color from 'color'
 import ModalSelector from 'react-native-modal-selector';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -29,6 +30,7 @@ const DatePicker = ({
   label,
   placeholder,
   value,
+  onPress,
 }: Props) => (
   <View
     style={styles.row}
@@ -42,19 +44,15 @@ const DatePicker = ({
         {label}
       </Text>
     </View>
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={styles.inputContainer}
     >
       <View style={styles.picker}>
-        <Text>{value ? value : placeholder}</Text>
-        <TouchableOpacity>
-
-            <Icon style={styles.dateButton} name="keyboard-arrow-down" backgroundColor='transparent' size={26} color={EStyleSheet.value('$colors.min')} />
-
-        </TouchableOpacity>
+        <Text>{value || placeholder}</Text>
       </View>
 
-    </View>
+    </TouchableOpacity>
   </View>
 );
 

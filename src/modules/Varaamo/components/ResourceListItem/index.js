@@ -13,7 +13,6 @@ const formatPrice = (minPrice, maxPrice) => {
   if (minPrice === maxPrice && (minPrice !== null && maxPrice !== null)) {
     return (minPrice + ' €/h');
   } else if (minPrice && maxPrice && minPrice !== 'null' && maxPrice !== 'null') {
-    console.warn(minPrice)
     return (minPrice + ' - ' + maxPrice + ' €/h');
   } else {
     return 'Maksuton'
@@ -77,7 +76,7 @@ const ResourceListItem = (props: Props) => {
           <Text style={styles.itemLocation}>{unit.name.fi}</Text>
           <View style={styles.itemFooter}>
             <View style={[styles.availabilityContainer, (reservable && opening_hours && opening_hours[0].opens) ? styles.available : styles.disabled]}>
-              <Text style={styles.availabilityText}>{ isResourceReservable(props.item) ? 'VAPAA' : 'SULJETTU'}</Text>
+              <Text style={styles.availabilityText}>{ (reservable && opening_hours && opening_hours[0].opens) ? 'VAPAA' : 'SULJETTU'}</Text>
             </View>
             <Text style={styles.typeText}>{type.name.fi}</Text>
           </View>

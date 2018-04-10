@@ -46,8 +46,25 @@ export const getResource = async (id, params) => {
 
     try {
       const resource = await makeRequest(url, 'GET', headers, null, null);
-      console.warn(resource)
       resolve(resource);
+    } catch (error) {
+      reject(error);
+    }
+  })
+}
+
+export const getPurposes = async () => {
+  return new Promise(async (resolve, reject) => {
+    let url = Config.RESPA_BASE_URL + 'purpose/';
+    const headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+
+    try {
+      const purposes = await makeRequest(url, 'GET', headers, null, null);
+
+      resolve(purposes);
     } catch (error) {
       reject(error);
     }
