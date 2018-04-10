@@ -11,9 +11,26 @@ Open City Skeleton and Open City Modules have been developed using:
 
 `"react-native": "0.50.3"`
 
+## Architecture
 
-## Features
+![Optional Text](../master/doc/open-city-app-general-architecture.png)
 
+
+## Basic functionalities
+
+### Theming and UI customization
+In `src/config/colors.js` change the `max, med, min` values of the `colors` object.
+
+More colors can also be added to the object to be used in custom components and modules.
+
+
+### Configuration
+Onboarding, tabs, headers, translations and navigation components can be configured with the above instructios and by modifying the `App.js` file.
+
+To configurate open-city-modules, check the documentation for each module found in the [`open-city-modules` repository](https://github.com/6aika/open-city-modules).
+
+
+## Functionalities in skeleton
 - Onboarding flow (Stack navigation)
   - Navigation through configured onboarding steps. (https://github.com/6aika/open-city-modules) includes views to create customized views for:
     - Splash screen
@@ -24,6 +41,7 @@ Open City Skeleton and Open City Modules have been developed using:
 - City selection
     - Possibility for user to change active city by switching using another Open City App derivate application. Selection launches the desired app, if installed, otherwise market application for download.
 - Profile
+- Tunnistamo
 
 
 ### Onboarding
@@ -74,6 +92,14 @@ The default header has a button that opens a list of other cities' apps.
 
 The profile tab shows the choices made in the onboarding.
 
+### Tunnistamo
+
+Skeleton layer provides functions to communicate with Tunnistamo API and saving authorization details to the device
+
+
+## Module layer
+
+
 
 ## Usage
 
@@ -81,18 +107,6 @@ To start using skeleton codebase, fork this repository and make new one for whit
 It is advisable to keep Skeleton vanilla code in separate branch, named "skeleton" for example.
 This way it's easier to pull changes to skeleton and merge to feature/master branch of the product repo.
 Also bugfixes etc are easier to contribute upstream.
-
-
-### Theming and UI customization
-In `src/config/colors.js` change the `max, med, min` values of the `colors` object.
-
-More colors can also be added to the object to be used in custom components and modules.
-
-
-### Configuration
-Onboarding, tabs, headers, translations and navigation components can be configured with the above instructios and by modifying the `App.js` file.
-
-To configurate open-city-modules, check the documentation for each module found in the [`open-city-modules` repository](https://github.com/6aika/open-city-modules).
 
 
 ## Contributing to open-city-skeleton and open-city-modules 
