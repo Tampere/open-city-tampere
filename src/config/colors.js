@@ -3,6 +3,8 @@ export type ColorSet = {
   max: string,
   med: string,
   min: string,
+  homefg: string,
+  homebg: string,
 }
 
 const colors: ColorSet = {
