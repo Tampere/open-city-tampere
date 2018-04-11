@@ -44,7 +44,12 @@ const ResourceListItem = (props: Props) => {
       <View style={styles.innerContainer}>
         {
           buttons.map((button) => (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                props.onPress(button)
+                props.setHours(buttons)
+              }}
+            >
               <View style={styles.buttonStyle}>
                 <Text style={styles.buttonText}>{button.timeString}</Text>
               </View>

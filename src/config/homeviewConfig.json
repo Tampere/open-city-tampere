@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "Helsinki",
+  "APP_VERSION": "v0.2.3",
+
+  // API URLs
+  "LINKED_EVENTS_API_BASE_URL": "http://linkedevents.tampere.fi/v1/event/",
+  "LINKED_EVENTS_GET_PARAMS": "?include=location&sort=start_time",
+
+
+  // OTHER URLs
+  "PRIVACY_POLICY_URL": "https://digi.hel.fi/helsinki-app-privacy-policy",
+
+  // Requests
+  "TIMEOUT_THRESHOLD": 40000,
+  "TIMEOUT_MESSAGE": "timeout",
+}

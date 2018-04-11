@@ -55,10 +55,6 @@ class VaraamoListView extends React.Component {
     })
   }
 
-  loadMore = () => {
-
-  }
-
   onDataChange = async (data) => {
     console.warn(data)
     const getParams = `purpose=${data.key}`
@@ -175,6 +171,7 @@ class VaraamoListView extends React.Component {
 
       this.setState({
         resources: nextPage,
+        loadingMore: false
       });
     }
   }
@@ -298,17 +295,22 @@ class VaraamoListView extends React.Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
+    const { Header } = this.props.screenProps;
 
-        <FlatList
-          onEndReached={() => this.loadMore()}
-          data={this.state.resources.results}
-          keyExtractor={this._keyExtractor}
-          renderItem={this.renderItem}
-          ListHeaderComponent={() => this.renderHeader()}
-          ListFooterComponent={() => this.renderFooter()}
-        />
+    return (
+      <View style={{ flex: 1 }}>
+        <Header />
+        <View style={styles.container}>
+
+          <FlatList
+            onEndReached={() => this.loadMore()}
+            data={this.state.resources.results}
+            keyExtractor={this._keyExtractor}
+            renderItem={this.renderItem}
+            ListHeaderComponent={() => this.renderHeader()}
+            ListFooterComponent={() => this.renderFooter()}
+          />
+        </View>
       </View>
     )
   }

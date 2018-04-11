@@ -7,20 +7,28 @@ import VaraamoListView from './views/VaraamoListView';
 import ResourceDetailView from './views/ResourceDetailView';
 
 // Navigator for Feeds module
-const VaraamoNavigator = StackNavigator({
-  VaraamoListView: {
-    screen: VaraamoListView,
+const VaraamoNavigator = StackNavigator(
+  {
+    VaraamoListView: {
+      screen: VaraamoListView,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    ResourceDetail: {
+      screen: ResourceDetailView,
+      navigationOptions: {
+        header: null,
+      },
+    },
+  }, {
+    initialRouteName: 'VaraamoListView',
+    // headerMode: 'none',
+    cardStyle: {
+      backgroundColor: colors.min,
+    },
   },
-  ResourceDetail: {
-    screen: ResourceDetailView,
-  },
-}, {
-  initialRouteName: 'VaraamoListView',
-  // headerMode: 'none',
-  cardStyle: {
-    backgroundColor: colors.min,
-  },
-});
+);
 
 /*
  Tampere Varaamo

@@ -15,8 +15,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { getResource } from 'src/modules/Varaamo/utils/respa';
 import colors from 'src/config/colors';
 import TimeChooser from 'src/modules/Varaamo/components/TimeChooser';
+import ReservationModal from 'src/modules/Varaamo/components/ReservationModal';
 import { isAuthed, updateProfile } from 'src/profile';
 import { doAuth } from 'src/utils/auth';
+import BackIcon from 'TampereApp/img/arrow_back.png';
 
 /*
  View for listing Varaamo reservations
@@ -27,6 +29,8 @@ class ResourceDetailView extends React.Component {
     super(props);
 
     this.state = {
+      selectableHours: [],
+      modalVisible: false,
       authed: false,
       item: this.props.navigation.state.params.item,
       openingHours: this.props.navigation.state.params.item.opening_hours[0],
@@ -150,67 +154,117 @@ class ResourceDetailView extends React.Component {
     });
   }
 
+  setHours = (hours) => {
+    data = [];
+    hours.map((hour, index) => {
+      data.push({ key: index, label: hour.timeString })
+    })
+    this.setState({ selectableHours: data })
+  }
+
+  onChangeStartTime = (item) => {
+    this.setState({ startTime: item.label })
+  }
+
+  onChangeEndTime = (item) => {
+    this.setState({ endTime: item.label })
+  }
+
+  goBack = () => {
+    this.props.navigation.goBack()
+  }
+
   render() {
     const { item } = this.state;
     const imageUrl = item.images.length > 0 && item.images[0].url;
+    const { Header } = this.props.screenProps;
 
     return (
-      <ScrollView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <View style={styles.titleContainer}>
-            <Text
-              style={styles.itemName}
-              numberOfLines={1}
-            >
-              {item.name.fi}
-            </Text>
-            <Text style={styles.itemLocation}>{item.unit.name && item.unit.name.fi}</Text>
-            <Text style={styles.itemLocation}>{item.unit.street_address && item.unit.street_address.fi}</Text>
-          </View>
-          <View style={styles.thumbnailContainer}>
+      <View style={{ flex: 1 }}>
+        <Header
+          leftAction={{
+            icon: BackIcon,
+            action: this.goBack,
+            style: {
+              tintColor: colors.max,
+            },
+          }}
+        />
+        <ScrollView style={{ flex: 1 }}>
 
-            <Image
-              style={{width: '100%', height: '100%'}}
-              source={{ uri: imageUrl }}
-            />
-            <View style={styles.thumbnailCapacity}>
-              <Icon name="people" size={16} color={colors.min} />
-              <Text style={styles.capacityText}>{item.people_capacity}</Text>
-            </View>
-            <View style={styles.thumbnailDescriptionContainer}>
-              <Text style={styles.thumbnailDescription}>{this.formatPrice(item.min_price_per_hour, item.max_price_per_hour)}</Text>
-            </View>
-            <View style={styles.thumbnailTypeContainer}>
-              <Text style={styles.thumbnailType}>{item.type && item.type.name && item.type.name.fi}</Text>
-            </View>
-          </View>
-          <View style={styles.bodyContainer}>
-            <Text style={styles.description}>{item.description && item.description.fi}</Text>
-            <Text style={styles.maxPeriod}>{ this.formatReservationPeriod(item)}</Text>
-            { !this.state.authed &&
-              <TouchableOpacity
-                onPress={() => this.authorize()}
+          <View style={styles.container}>
+            <View style={styles.titleContainer}>
+              <Text
+                style={styles.itemName}
+                numberOfLines={1}
               >
-                <Text style={styles.maxPeriod}>Sinun on kirjauduttava sisään tehdäksesi varauksia.</Text>
-              </TouchableOpacity>
-            }
-            <View style={{marginVertical: 16}}>
-              <Calendar
-                onDayPress={this.onDayPress}
-                style={styles.calendar}
-                firstDay={1}
-                hideExtraDays
-                markedDates={this.state.visibleMarkedDates}
-                onMonthChange={(month) => this.onMonthChanged(month)}
+                {item.name.fi}
+              </Text>
+              <Text style={styles.itemLocation}>{item.unit.name && item.unit.name.fi}</Text>
+              <Text style={styles.itemLocation}>{item.unit.street_address && item.unit.street_address.fi}</Text>
+            </View>
+            <View style={styles.thumbnailContainer}>
+
+              <Image
+                style={{width: '100%', height: '100%'}}
+                source={{ uri: imageUrl }}
+              />
+              <View style={styles.thumbnailCapacity}>
+                <Icon name="people" size={16} color={colors.min} />
+                <Text style={styles.capacityText}>{item.people_capacity}</Text>
+              </View>
+              <View style={styles.thumbnailDescriptionContainer}>
+                <Text style={styles.thumbnailDescription}>{this.formatPrice(item.min_price_per_hour, item.max_price_per_hour)}</Text>
+              </View>
+              <View style={styles.thumbnailTypeContainer}>
+                <Text style={styles.thumbnailType}>{item.type && item.type.name && item.type.name.fi}</Text>
+              </View>
+            </View>
+            <View style={styles.bodyContainer}>
+              <Text style={styles.description}>{item.description && item.description.fi}</Text>
+              <Text style={styles.maxPeriod}>{ this.formatReservationPeriod(item)}</Text>
+              { !this.state.authed &&
+                <TouchableOpacity
+                  onPress={() => this.authorize()}
+                >
+                  <Text style={styles.maxPeriod}>Sinun on kirjauduttava sisään tehdäksesi varauksia.</Text>
+                </TouchableOpacity>
+              }
+              <View style={{marginVertical: 16}}>
+                <Calendar
+                  onDayPress={this.onDayPress}
+                  style={styles.calendar}
+                  firstDay={1}
+                  hideExtraDays
+                  markedDates={this.state.visibleMarkedDates}
+                  onMonthChange={(month) => this.onMonthChanged(month)}
+                />
+              </View>
+              <TimeChooser
+                openingHours={this.state.openingHours}
+                interval={this.state.item.min_period}
+                setHours={(hours) => this.setHours(hours)}
+                onPress={(button) => this.setState({
+                  modalVisible: true,
+                  startTime: button.timeString,
+                })}
               />
             </View>
-            <TimeChooser
-              openingHours={this.state.openingHours}
-              interval={this.state.item.min_period}
-            />
           </View>
-        </View>
-      </ScrollView>
+          <ReservationModal
+            closeModal={() => this.setState({  modalVisible: false })}
+            visible={this.state.modalVisible}
+            item={this.state.item}
+            data={this.state.selectableHours}
+            startTime={this.state.startTime}
+            endTime={this.state.endTime}
+            onChangeStartTimeSelection={(item) => this.onChangeStartTime(item)}
+            onChangeEndTimeSelection={(item) => this.onChangeEndTime(item)}
+            palceholder={'placeholder'}
+          />
+        </ScrollView>
+      </View>
+
     );
   }
 }
