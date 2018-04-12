@@ -26,7 +26,7 @@ Pre-install requirements:
   - Xcode version 8.0 or higher
   - iOS simulator or device runnin version 8.0 or higher
 
-This step-by-step tutorial's purpose is to help developers to start developing Open City Tampere application. Check instructios on [`open-city-skeleton` repository](https://github.com/6aika/open-city-skeleton) how to develop new white-labeled application based on Open City Skeleton.
+This step-by-step tutorial's purpose is to help developers to start developing Open City Tampere application. Check instructions on [`open-city-skeleton` repository](https://github.com/6aika/open-city-skeleton) how to develop new white-labeled application based on Open City Skeleton.
 
 * Clone the `open-city-tampere` repository
   `git clone https://github.com/Tampere/open-city-tampere.git`
@@ -62,7 +62,7 @@ min: '#FFFFFF',
 ### Configuration
 Onboarding, tabs, headers, translations and navigation components can be configured with the above instructios and by modifying the `App.js` file.
 
-To configure each module, check the default configuration for the module shown in [`open-city-modules` documentation](https://github.com/6aika/open-city-modules). In the file you can change module settings you wish to override by using for example `configureFeedback` function:
+To configure each module, check the default configuration and detailed instructions for the module shown in [`open-city-modules` documentation](https://github.com/6aika/open-city-modules). In the file you can change module settings you wish to override by using for example `configureFeedback` function:
 
 ```
 import feedbackConfig from './feedbackConfig.json'
@@ -81,6 +81,7 @@ configureFeedback(feedbackConfig)
     - HomeViewModule
       - LinkedEvents http://linkedevents.tampere.fi/
       - RSS Reader https://www.tampere.fi/tampereen-kaupunki/ajankohtaista/
+      - Promotions
     - FeedBackModule
       - Open311 API [http://feedback.tampere.fi/](feedback.tampere.fi/)
     - Profile
@@ -155,6 +156,8 @@ Tunnistamo API endpoint is https://auth.tampere.fi/
 
 Users can reserve resources from VaraamoModule
 Varaamo depends on Tunnistamo and Respa https://respa.tampere.fi/v1/
+
+Varaamo module is currently implemented only to Open City Tampere app, and it's not available as a separate module. Varaamo endpoints urls can be configured in `src/config/config.json
 
 
 ### Troubleshooting
