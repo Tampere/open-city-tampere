@@ -37,7 +37,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -51,6 +51,13 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>MiloPro.otf</string>
+		<string>MiloPro-TextIta.otf</string>
+		<string>MiloPro-Text.otf</string>
+		<string>MiloPro-ExligIta.otf</string>
+		<string>MiloPro-Exlig.otf</string>
+		<string>MiloPro-BoldIta.otf</string>
+		<string>MiloPro-Bold.otf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
 		<string>Feather.ttf</string>
@@ -62,12 +69,6 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
-		<string>MiloPro-Bold.otf</string>
-		<string>MiloPro-BoldIta.otf</string>
-		<string>MiloPro-Exlig.otf</string>
-		<string>MiloPro-ExligIta.otf</string>
-		<string>MiloPro-Text.otf</string>
-		<string>MiloPro-TextIta.otf</string>
 	</array>
 </dict>
 </plist>

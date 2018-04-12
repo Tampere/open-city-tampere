@@ -45,6 +45,7 @@ class AuthStep extends React.Component {
       this.setState({ loading: true });
       console.warn(profile)
       const authorization = await doAuth();
+      console.warn(authorization)
       const myProfile = { ...profile, auth: authorization };
       this.setState({ loading: false });
       this.props.next(myProfile);

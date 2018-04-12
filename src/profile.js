@@ -64,11 +64,13 @@ export const isAuthed = async () => {
     try {
       const valueJSON: string = await AsyncStorage.getItem(key);
       const profile = JSON.parse(valueJSON);
+      if (profile) console.warn(profile)
       if (
         profile &&
         profile.auth &&
         profile.auth.accessTokenExpirationDate
       ) {
+
         const now = new Date();
         const expire = new Date(profile.auth.accessTokenExpirationDate)
         // FIXME: Check token expiration

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {
   View,
+  Platform
 } from 'react-native';
 // $FlowFixMe
 import { TabNavigator, TabBarBottom } from 'react-navigation';
@@ -20,7 +21,7 @@ import { loadProfile, saveProfile } from 'src/profile';
 // eslint-disable-next-line no-unused-vars
 import i18n from 'src/config/translations';
 
-setCustomText({ style: { fontFamily: 'MiloPro' }, backgroundColor: 'transparent' });
+setCustomText({ style: { fontFamily: Platform.OS === 'android' ? 'MiloPro' : 'Milo Pro' }, backgroundColor: 'transparent' });
 initColors(colors);
 
 const Tabs = TabNavigator(tabs, {
@@ -46,7 +47,7 @@ type State = {
 class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-
+    console.disableYellowBox = true;
     this.state = {
       showOnboarding: true,
       profile: {},
@@ -102,6 +103,8 @@ class App extends React.Component<Props, State> {
       Header: this.Header,
       showHero: false,
       showHearings: false,
+      showPromotions: false,
+      showEvents: true,
     };
     return (
       <View style={{ flex: 1 }}>

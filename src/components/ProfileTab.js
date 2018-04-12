@@ -40,7 +40,7 @@ const ProfileTab = (props: Props) => {
   const { restartOnboarding } = props.screenProps;
   const { t, i18n } = props;
   const translatedUserType = t(`userTypeStep:options.${profile.userType}`);
-  const translatedInterests = profile.interests.map(value => t(`interestStep:options.${value}`));
+  const translatedInterests = profile.interests && profile.interests.map(value => t(`interestStep:options.${value}`));
   const translatedAreas = profile.areas.map(value => t(`areaStep:options.${value}`));
   const { Header } = props.screenProps;
   return (

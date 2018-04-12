@@ -3,7 +3,9 @@ import * as React from 'react';
 
 import colors, { type ColorSet } from 'src/config/colors';
 import { type Profile } from 'src/types';
-
+import AuthStep from 'src/components/AuthStep';
+import { updateProfile } from 'src/profile'
+import { doAuth } from 'src/utils/auth';
 const locale = 'fi';
 
 /*
@@ -51,6 +53,7 @@ export default class Onboarding extends React.Component<Props, State> {
       profile: {},
     };
   }
+
 
   next = (profile: Profile) => {
     const { step } = this.state;
