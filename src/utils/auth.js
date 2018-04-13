@@ -15,7 +15,7 @@ export const doAuth = () => {
       try {
         const result = await authorize(config)
         const profile = { auth: result };
-        updateProfile(profile);
+        // updateProfile(profile);
         resolve(profile)
       } catch (error) {
         console.warn('error')
