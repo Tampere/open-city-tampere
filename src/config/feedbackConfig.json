@@ -9,5 +9,5 @@
   "OPEN311_SERVICE_REQUESTS_EXTENSIONS_POSTFIX": "",
 
   // API Key for sending new service requests
-  "OPEN311_SEND_SERVICE_API_KEY": "z0Dnp5uCIssESohSr48ahALFjAC9yEAk7vn8gWEiRuNvzAaPwIhzZJTjXe34",
+  "OPEN311_SEND_SERVICE_API_KEY": "send service api key",
 }

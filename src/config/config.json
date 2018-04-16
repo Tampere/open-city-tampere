@@ -3,7 +3,7 @@
   "TIMEOUT_THRESHOLD": 5000,
   "TIMEOUT_MESSAGE": "Connection timed out",
   "OPENID_ISSUER": "https://auth.tampere.fi/openid",
-  "OPENID_CLIENT_ID": "SGIeVHqqcTORltiUgKgl4kBGScOXZcNJHRAYEi1B",
+  "OPENID_CLIENT_ID": "OPENID CLIENT ID",
   "OPENID_REDIRECT_URL": "opencitytampere://auth/callback",
   "OPENID_SCOPES": ["openid", "profile"],
 
