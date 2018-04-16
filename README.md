@@ -40,7 +40,7 @@ This step-by-step tutorial's purpose is to help developers to start developing O
 
 ## Architecture
 
-![Architecture](../develop/doc/open-city-tampere-general-architecture.png)
+![Architecture](../master/doc/open-city-tampere-general-architecture.png)
 
 
 ## Basic functionalities
