@@ -36,6 +36,15 @@ class ResourceDetailView extends React.Component {
       openingHours: this.props.navigation.state.params.item.opening_hours[0],
       selected: null,
       markedDates: null,
+      formFields: {
+        eventNameField: '',
+        userNameField: '',
+        hetuField: '',
+        phoneField: '',
+        emailField: '',
+        descriptionField: '',
+        participantCountField: '',
+      },
     };
   }
 
@@ -154,6 +163,14 @@ class ResourceDetailView extends React.Component {
     });
   }
 
+  genericFieldSaver = (key, value) => {
+    const fields = JSON.parse(JSON.stringify(this.state.formFields));
+    fields[key] = value;
+    this.setState({
+      formFields: fields,
+    })
+  }
+
   setHours = (hours) => {
     data = [];
     hours.map((hour, index) => {
@@ -258,9 +275,11 @@ class ResourceDetailView extends React.Component {
             data={this.state.selectableHours}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
+            genericFieldSaver={this.genericFieldSaver}
             onChangeStartTimeSelection={(item) => this.onChangeStartTime(item)}
             onChangeEndTimeSelection={(item) => this.onChangeEndTime(item)}
             palceholder={'placeholder'}
+            formFields={this.state.formFields}
           />
         </ScrollView>
       </View>

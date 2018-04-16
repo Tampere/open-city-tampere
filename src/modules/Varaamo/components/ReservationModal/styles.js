@@ -10,7 +10,7 @@ const styles = EStyleSheet.create({
     marginVertical: 12,
   },
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '$modalBackground',
     marginVertical: 64,
     marginHorizontal: 32,
@@ -32,7 +32,8 @@ const styles = EStyleSheet.create({
   },
   timeInputContainer: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   bodyText: {
     color: '$colors.min',
@@ -40,21 +41,25 @@ const styles = EStyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'center'
+  },
+  buttonRowContainer: {
+    flexDirection: 'row',
+    flexGrow: 1,
+
   },
   timePicker: {
-    paddingHorizontal: 16,
-    borderWidth: 1,
+    paddingHorizontal: 32,
     paddingTop: 8,
     paddingBottom: 8,
     textAlignVertical: 'top',
     flexDirection: 'row',
-    width: '80%',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    width: '100%'
   },
   inputLabel: {
     color: '$colors.min',
-    marginBottom: 4,
+    marginBottom: 8,
+    alignSelf: 'flex-start'
   },
   inputContainer: {
     marginTop: 8,
@@ -66,9 +71,10 @@ const styles = EStyleSheet.create({
     top: '35%',
   },
   buttonContainer: {
+
     backgroundColor: '$buttonBackground',
-    marginHorizontal: 16,
-    marginVertical: 16,
+    marginRight: 16,
+    marginVertical: 32,
     paddingHorizontal: 16,
     paddingVertical: 8,
   }
