@@ -25,8 +25,10 @@ export const updateProfile = async (profile: Profile) => {
       }
 
       // Do a normal save if no saved profile found
-      await AsyncStorage.setItem(key, JSON.stringify(profile));
-      resolve(profile);
+      if (!oldProfile) {
+        await AsyncStorage.setItem(key, JSON.stringify(profile));
+        resolve(profile);
+      }
     } catch (e) {
       console.error(`Error updating profile to AsyncStorage: ${e.name}: ${e.message}`)
       reject(e);
@@ -68,9 +70,9 @@ export const isAuthed = async () => {
       if (
         profile &&
         profile.auth &&
-        profile.auth.accessTokenExpirationDate
+        profile.auth.accessTokenExpirationDate &&
+        profile.auth.idToken
       ) {
-
         const now = new Date();
         const expire = new Date(profile.auth.accessTokenExpirationDate)
         // FIXME: Check token expiration

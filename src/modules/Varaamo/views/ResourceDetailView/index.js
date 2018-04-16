@@ -90,6 +90,7 @@ class ResourceDetailView extends React.Component {
       this.setState({ loading: true });
       const authorization = await doAuth();
       await updateProfile({ auth: authorization })
+      const profile = await updateProfile({ auth: authorization.auth })
       this.setState({ loading: false, authed: true });
     } catch (error) {
       this.setState({ error: true, loading: false })
